@@ -7,11 +7,20 @@ class Paper(Container):
     def __init__(
         self,
         bgcolor: str,
+        width: int,
+        height: int,
+        outlined: str = False,
         elevation: int = 1,
         content: Control = None,
         on_click: ControlEvent = None,
     ) -> None:
-        super().__init__(content=content, bgcolor=bgcolor, on_click=on_click)
+        super().__init__(
+            content=content,
+            bgcolor=bgcolor,
+            width=width,
+            height=height,
+            on_click=on_click,
+        )
         self.elevation: int = elevation
         # Define the shadow parameters based on the distance
         self.shadow_params: dict = {
@@ -39,20 +48,16 @@ class Paper(Container):
         ]
 
         # Create the container with the specified shadow
-        self.width = 200
-        self.height = 50
-        self.padding = ft.padding.all(10)
+        if outlined:
+            self.border = border.all(width=2, color="#80868B")
         self.alignment = ft.alignment.center
-
         self.shadow = shadows
-
-        # self.update()
-        # return elevated_container
 
 
 def main(page: Page):
     page.scroll = "always"
-    page.bgcolor = "white"
+    # page.bgcolor = "white"
+    page.theme_mode = "light"
     page.spacing = 50
     page.padding = 0
     page.vertical_alignment = "center"
@@ -62,10 +67,13 @@ def main(page: Page):
     for dist in distances:
         container = Paper(
             elevation=dist,
+            width=200,
+            height=50,
             bgcolor="white",
+            outlined=True,
             content=ft.Text(f"Elevation {dist}", color="black"),
         )
-        # container.on_click = lambda _: print("clicked")
+        container.border_radius = 5
         page.add(container)
         if dist == 24:
             container.margin = margin.only(bottom=50)
