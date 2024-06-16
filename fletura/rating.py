@@ -11,15 +11,11 @@ class RatingSize:
     extralarge = 2
 
 
+@dataclass
 class RatingType:
     CONTROLLED = "controlled"
     READONLY = "readonly"
     DISABLED = "disabled"
-
-
-# A function that recieves an outlined icon and returns a filled one
-def get_filled_icon(outlined_icon):
-    return re.sub(r"(_OUTLINE)?_OUTLINED|_FILL$", "", outlined_icon)
 
 
 class Rating(Row):
@@ -31,15 +27,16 @@ class Rating(Row):
         rating_icon: str = icons.STAR_OUTLINE_OUTLINED,
         size: str = "large",
         color: str = colors.WHITE,
-        selection_color: str = colors.YELLOW,
+        selection_color: str = colors.ORANGE,
         selection_icon: str = None,
-        on_hover_color: str = colors.YELLOW,
+        on_hover_color: str = colors.ORANGE,
     ):
         super().__init__()
 
         self.max_value: int = max_value
         self.rating_value: float = rating_value
         self.rating_icon: str = rating_icon
+        self.selection_icon: str = selection_icon
         self.size = size
         self.selection_color: str = selection_color
         self.color: str = color
@@ -52,11 +49,7 @@ class Rating(Row):
                     icon=self.rating_icon,
                     icon_color=self.color,
                     selected_icon_color=self.selection_color,
-                    selected_icon=(
-                        get_filled_icon(self.rating_icon)
-                        if selection_icon == None
-                        else selection_icon
-                    ),
+                    selected_icon=self.selection_icon,
                     data=True,
                     on_click=(
                         self.on_icon_clicked
@@ -78,6 +71,11 @@ class Rating(Row):
                         padding=padding.all(0),
                     ),
                     scale=1.0,
+                    mouse_cursor=(
+                        MouseCursor.CLICK
+                        if self.rating_type == RatingType.CONTROLLED
+                        else MouseCursor.ALIAS
+                    ),
                     # padding=padding.all(0),
                 ),
                 margin=margin.all(-7),
@@ -100,7 +98,24 @@ class Rating(Row):
 
         self.spacing = 0
         self.alignment = "center"
-        self.opacity = 0.5 if self.rating_type == RatingType.DISABLED else 1
+        self.opacity = 0.4 if self.rating_type == RatingType.DISABLED else 1
+
+        # implement
+        if self.rating_value != 0 and (
+            self.rating_type == RatingType.READONLY
+            or self.rating_type == RatingType.DISABLED
+        ):
+            if str(self.rating_value).isdigit() == False:
+                for i in range(int(self.rating_value) + 1):
+                    self.controls[i].content.selected = True
+                    if str(self.rating_value).isdigit() == False:
+
+                        self.controls[
+                            (int(self.rating_value))
+                        ].content.selected_icon = "STAR_HALF"
+            else:
+                for i in range(int(self.rating_value)):
+                    self.controls[i].content.selected = True
 
     def icon_hovered(self, e):
         # e.control.content.selected = True if e.data == "true" else False
@@ -124,17 +139,23 @@ def main(page: Page):
     page.add(
         # Rating(max_value=5, size="small"),
         Rating(
+            rating_icon=icons.STAR_OUTLINE_OUTLINED,
+            selection_icon=icons.STAR,
+            max_value=5,
+            rating_type=RatingType.CONTROLLED,
+            # on_hover_color="white",
+        ),
+        Rating(
+            max_value=5,
+            selection_icon=icons.STAR,
+            rating_value=2.5,
+            rating_type=RatingType.READONLY,
+        ),
+        Rating(
             rating_icon=cupertino_icons.HEART,
             selection_icon=cupertino_icons.HEART_FILL,
             max_value=5,
-            rating_type=RatingType.CONTROLLED,
-            selection_color="red",
-            color="blue",
-        ),
-        Rating(max_value=5, rating_type=RatingType.READONLY),
-        Rating(
-            rating_icon=cupertino_icons.HEART_FILL,
-            max_value=5,
+            rating_value=2.5,
             rating_type=RatingType.DISABLED,
         ),
     )
