@@ -47,19 +47,8 @@ class Rating(Row):
     def on_icon_clicked(self, e):
         rating_list = e.control.parent.parent.controls
         index = rating_list.index(e.control.parent)
-        # print(index)
-        # if index >= 0:
-        for i in range(0, index + 2):
-            # print(i)
-            rating_list[i].content.selected = True
-            rating_list[i].content.data = not rating_list[i].content.selected
-
-            rating_list[i].update()
-
-        for i in range(index, len(rating_list)):
-
-            rating_list[i].content.selected = False
-            rating_list[i].content.data = not rating_list[i].content.selected
+        for i in range(len(rating_list)):
+            rating_list[i].content.selected = i <= index
             rating_list[i].update()
 
 
@@ -67,7 +56,7 @@ def main(page: Page):
     page.vertical_alignment = "center"
     page.alignment = "center"
     page.add(
-        Rating(max_value=10),
+        Rating(max_value=1),
     )
 
 
