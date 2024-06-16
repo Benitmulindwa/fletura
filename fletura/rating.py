@@ -4,20 +4,29 @@ from dataclasses import dataclass
 
 @dataclass
 class RatingSize:
-    small = 0.5
+    small = 0.7
     medium = 1
     large = 1.5
     extralarge = 2
 
 
+class RatingType:
+    CONTROLLED = "controlled"
+    READONLY = "readonly"
+    DISABLED = "disabled"
+
+
 class Rating(Row):
     def __init__(
         self,
+        rating_type: str = "controlled",
         max_value: int = 5,
         rating_value: float = 0.0,
         rating_icon: str = None,
         size: str = "large",
-        on_hover_color=colors.YELLOW,
+        color: str = colors.WHITE,
+        selection_color: str = colors.YELLOW,
+        on_hover_color: str = colors.YELLOW,
     ):
         super().__init__()
 
@@ -25,23 +34,33 @@ class Rating(Row):
         self.rating_value: float = rating_value
         self.rating_icon: str = rating_icon
         self.size = size
+        self.selection_color: str = selection_color
+        self.rating_type: str = rating_type
+
         self.controls = [
             Container(
                 IconButton(
                     icon=icons.STAR_OUTLINE_OUTLINED,
-                    selected_icon_color="yellow",
+                    selected_icon_color=self.selection_color,
                     selected_icon=icons.STAR,
                     data=True,
-                    on_click=self.on_icon_clicked,
-                    content=Icon(icons.ACCOUNT_TREE),
+                    on_click=(
+                        self.on_icon_clicked
+                        if self.rating_type == RatingType.CONTROLLED
+                        else None
+                    ),
                     style=ButtonStyle(
                         color={
-                            MaterialState.HOVERED: on_hover_color,
+                            MaterialState.HOVERED: (
+                                on_hover_color
+                                if self.rating_type == RatingType.CONTROLLED
+                                else None
+                            ),
                         },
                         overlay_color={
                             MaterialState.HOVERED: colors.TRANSPARENT,
-                            MaterialState.FOCUSED: colors.BLUE,
-                            MaterialState.DEFAULT: colors.WHITE,
+                            MaterialState.FOCUSED: colors.WHITE,
+                            MaterialState.DEFAULT: color,
                         },
                         padding=padding.all(0),
                     ),
@@ -49,7 +68,11 @@ class Rating(Row):
                     # padding=padding.all(0),
                 ),
                 margin=margin.all(-7),
-                on_hover=self.icon_hovered,
+                on_hover=(
+                    self.icon_hovered
+                    if self.rating_type == RatingType.CONTROLLED
+                    else None
+                ),
             )
             for _ in range(self.max_value)
         ]
@@ -64,6 +87,7 @@ class Rating(Row):
 
         self.spacing = 0
         self.alignment = "center"
+        self.opacity = 0.5 if self.rating_type == RatingType.DISABLED else 1
 
     def icon_hovered(self, e):
         # e.control.content.selected = True if e.data == "true" else False
@@ -82,7 +106,10 @@ def main(page: Page):
     page.vertical_alignment = "center"
     page.alignment = "center"
     page.add(
-        Rating(max_value=5),
+        # Rating(max_value=5, size="small"),
+        Rating(max_value=5, rating_type=RatingType.CONTROLLED),
+        Rating(max_value=5, rating_type=RatingType.READONLY),
+        Rating(max_value=5, rating_type=RatingType.DISABLED),
     )
 
 
