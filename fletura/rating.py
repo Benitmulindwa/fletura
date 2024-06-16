@@ -35,14 +35,13 @@ class Rating(Row):
                             MaterialState.DEFAULT: colors.WHITE,
                         },
                     ),
-                    # TextButton(icon=icons.ABC_OUTLINED),
-                    scale=2.0,
+                    scale=1.0,
                     padding=padding.all(0),
                 )
             )
             for _ in range(self.max_value)
         ]
-        self.spacing = 4
+        self.spacing = 0
         self.alignment = "center"
 
     def on_icon_clicked(self, e):
@@ -50,22 +49,25 @@ class Rating(Row):
         index = rating_list.index(e.control.parent)
         # print(index)
         # if index >= 0:
-        for i in range(0, index + 1):
-            print(i)
-            rating_list[i].content.selected = True if e.control.data == True else False
-            rating_list[i].content.data = not e.control.selected
-            # e.control.selected = True if e.control.data == True else False
-            # e.control.data = not e.control.selected
+        for i in range(0, index + 2):
+            # print(i)
+            rating_list[i].content.selected = True
+            rating_list[i].content.data = not rating_list[i].content.selected
+
             rating_list[i].update()
-        # elif
+
+        for i in range(index, len(rating_list)):
+
+            rating_list[i].content.selected = False
+            rating_list[i].content.data = not rating_list[i].content.selected
+            rating_list[i].update()
 
 
 def main(page: Page):
     page.vertical_alignment = "center"
     page.alignment = "center"
     page.add(
-        Rating(),
-        # Container(Icon(icons.ZOOM_IN_MAP_ROUNDED), on_click=lambda _: print("clicked")),
+        Rating(max_value=10),
     )
 
 
