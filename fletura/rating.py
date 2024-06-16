@@ -106,7 +106,7 @@ class Rating(Row):
         # e.control.content.selected = True if e.data == "true" else False
         e.control.content.scale = 1.5 if e.data == "true" else 1.0
         e.control.content.icon_color = (
-            self.on_hover_color if e.data == "true" else "white"
+            self.on_hover_color if e.data == "true" else self.color
         )
         e.control.content.update()
 
@@ -129,6 +129,7 @@ def main(page: Page):
             max_value=5,
             rating_type=RatingType.CONTROLLED,
             selection_color="red",
+            color="blue",
         ),
         Rating(max_value=5, rating_type=RatingType.READONLY),
         Rating(
