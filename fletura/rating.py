@@ -1,5 +1,6 @@
 from flet import *
 from dataclasses import dataclass
+import re
 
 
 @dataclass
@@ -16,16 +17,22 @@ class RatingType:
     DISABLED = "disabled"
 
 
+# A function that recieves an outlined icon and returns a filled one
+def get_filled_icon(outlined_icon):
+    return re.sub(r"(_OUTLINE)?_OUTLINED|_FILL$", "", outlined_icon)
+
+
 class Rating(Row):
     def __init__(
         self,
         rating_type: str = "controlled",
         max_value: int = 5,
         rating_value: float = 0.0,
-        rating_icon: str = None,
+        rating_icon: str = icons.STAR_OUTLINE_OUTLINED,
         size: str = "large",
         color: str = colors.WHITE,
         selection_color: str = colors.YELLOW,
+        selection_icon: str = None,
         on_hover_color: str = colors.YELLOW,
     ):
         super().__init__()
@@ -35,14 +42,21 @@ class Rating(Row):
         self.rating_icon: str = rating_icon
         self.size = size
         self.selection_color: str = selection_color
+        self.color: str = color
+        self.on_hover_color: str = on_hover_color
         self.rating_type: str = rating_type
 
         self.controls = [
             Container(
                 IconButton(
-                    icon=icons.STAR_OUTLINE_OUTLINED,
+                    icon=self.rating_icon,
+                    icon_color=self.color,
                     selected_icon_color=self.selection_color,
-                    selected_icon=icons.STAR,
+                    selected_icon=(
+                        get_filled_icon(self.rating_icon)
+                        if selection_icon == None
+                        else selection_icon
+                    ),
                     data=True,
                     on_click=(
                         self.on_icon_clicked
@@ -52,7 +66,7 @@ class Rating(Row):
                     style=ButtonStyle(
                         color={
                             MaterialState.HOVERED: (
-                                on_hover_color
+                                self.on_hover_color
                                 if self.rating_type == RatingType.CONTROLLED
                                 else None
                             ),
@@ -60,7 +74,6 @@ class Rating(Row):
                         overlay_color={
                             MaterialState.HOVERED: colors.TRANSPARENT,
                             MaterialState.FOCUSED: colors.WHITE,
-                            MaterialState.DEFAULT: color,
                         },
                         padding=padding.all(0),
                     ),
@@ -92,6 +105,9 @@ class Rating(Row):
     def icon_hovered(self, e):
         # e.control.content.selected = True if e.data == "true" else False
         e.control.content.scale = 1.5 if e.data == "true" else 1.0
+        e.control.content.icon_color = (
+            self.on_hover_color if e.data == "true" else "white"
+        )
         e.control.content.update()
 
     def on_icon_clicked(self, e):
@@ -107,9 +123,19 @@ def main(page: Page):
     page.alignment = "center"
     page.add(
         # Rating(max_value=5, size="small"),
-        Rating(max_value=5, rating_type=RatingType.CONTROLLED),
+        Rating(
+            rating_icon=cupertino_icons.HEART,
+            selection_icon=cupertino_icons.HEART_FILL,
+            max_value=5,
+            rating_type=RatingType.CONTROLLED,
+            selection_color="red",
+        ),
         Rating(max_value=5, rating_type=RatingType.READONLY),
-        Rating(max_value=5, rating_type=RatingType.DISABLED),
+        Rating(
+            rating_icon=cupertino_icons.HEART_FILL,
+            max_value=5,
+            rating_type=RatingType.DISABLED,
+        ),
     )
 
 
