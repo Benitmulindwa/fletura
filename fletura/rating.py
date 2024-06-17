@@ -29,6 +29,7 @@ class Rating(Row):
         color: str = colors.WHITE,
         selection_color: str = colors.ORANGE,
         selection_icon: str = None,
+        half_icon: str = icons.STAR_HALF,
         on_hover_color: str = colors.ORANGE,
     ):
         super().__init__()
@@ -87,6 +88,7 @@ class Rating(Row):
             )
             for _ in range(self.max_value)
         ]
+        # rating size
         if size == "small":
             self.scale = RatingSize.small
         elif size == "medium":
@@ -112,7 +114,7 @@ class Rating(Row):
 
                         self.controls[
                             (int(self.rating_value))
-                        ].content.selected_icon = "STAR_HALF"
+                        ].content.selected_icon = half_icon
             else:
                 for i in range(int(self.rating_value)):
                     self.controls[i].content.selected = True
@@ -150,12 +152,14 @@ def main(page: Page):
             selection_icon=icons.STAR,
             rating_value=2.5,
             rating_type=RatingType.READONLY,
+            size="large",
         ),
         Rating(
             rating_icon=cupertino_icons.HEART,
             selection_icon=cupertino_icons.HEART_FILL,
+            half_icon=icons.HEART_BROKEN_OUTLINED,
             max_value=5,
-            rating_value=2.5,
+            rating_value=1.5,
             rating_type=RatingType.DISABLED,
         ),
     )
