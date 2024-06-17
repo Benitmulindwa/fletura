@@ -1,2 +1,2 @@
 from .paper import Paper
-from .rating import Rating
+from .rating import Rating, RatingType

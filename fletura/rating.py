@@ -28,7 +28,7 @@ class Rating(Row):
         size: str = "large",
         color: str = colors.WHITE,
         selection_color: str = colors.ORANGE,
-        selection_icon: str = None,
+        selection_icon: str = icons.STAR,
         half_icon: str = icons.STAR_HALF,
         on_hover_color: str = colors.ORANGE,
     ):

@@ -1,5 +1,5 @@
 from flet import *
-from fletura import Paper
+from fletura import Paper, Rating, RatingType
 
 
 def main(page: Page):
@@ -8,7 +8,17 @@ def main(page: Page):
             bgcolor="#ffffff",
             width=200,
             height=50,
-        )
+        ),
+        Rating(
+            max_value=5, selection_icon=icons.STAR, rating_type=RatingType.CONTROLLED
+        ),
+        Rating(
+            max_value=5,
+            # selection_icon=icons.STAR,
+            rating_value=2.5,
+            rating_type="readonly",
+            size="large",
+        ),
     )
 
 
