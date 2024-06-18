@@ -7,7 +7,7 @@ class Badge(Container):
         badge_icon: str = icons.MAIL,
         icon_color: str = "white",
         badge_color: str = "red",
-        count: int = 19,
+        count: int = 4,
         max_value: int = 9,
         position: str = "top_left",
     ):
@@ -49,7 +49,7 @@ class Badge(Container):
             bgcolor=self.badge_color,
             border_radius=badge_width // 2,
             width=badge_width,
-            height=badge_width,
+            height=20,
             alignment=alignment.center,
         )
         if position == "top_left":
@@ -67,13 +67,9 @@ def main(page: Page):
     page.horizontal_alignment = "center"
     page.add(
         Badge(position="top_left"),
-        Badge(
-            cupertino_icons.CART,
-            position="center_left",
-        ),
-        Badge(count=5, position="top_left"),
-        Badge(count=15, position="top_left", max_value=9),
-        Badge(count=105, position="center_left", max_value=99),
+        Badge(cupertino_icons.CART, position="center_left", count=105, max_value=99),
+        Badge(count=15, badge_color="purple500", position="top_left", max_value=9),
+        Badge(count=105, badge_color="blue", position="center_left", max_value=99),
         Badge(count=1005, position="center_left", max_value=999),
     )
 
