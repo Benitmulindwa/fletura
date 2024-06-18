@@ -77,7 +77,6 @@ class Rating(Row):
                         if self.rating_type == RatingType.CONTROLLED
                         else MouseCursor.ALIAS
                     ),
-                    # padding=padding.all(0),
                 ),
                 margin=margin.all(-7),
                 on_hover=(
@@ -120,7 +119,7 @@ class Rating(Row):
                     self.controls[i].content.selected = True
 
     def icon_hovered(self, e):
-        # e.control.content.selected = True if e.data == "true" else False
+
         e.control.content.scale = 1.5 if e.data == "true" else 1.0
         e.control.content.icon_color = (
             self.on_hover_color if e.data == "true" else self.color
@@ -145,7 +144,6 @@ def main(page: Page):
             selection_icon=icons.STAR,
             max_value=5,
             rating_type=RatingType.CONTROLLED,
-            # on_hover_color="white",
         ),
         Rating(
             max_value=5,
