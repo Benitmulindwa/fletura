@@ -20,7 +20,7 @@ class Badge(Container):
                     Icon(badge_icon, color=icon_color, size=30),
                     height=50,
                     width=60,
-                    margin=margin.only(left=-16, right=15),
+                    margin=margin.only(left=-16 if "left" in position else 5, right=15),
                 ),
                 self.create_badge(count, position),
             ]
@@ -58,6 +58,15 @@ class Badge(Container):
         elif position == "center_left":
             badge.top = 15
             badge.left = 22
+        elif position == "bottom_left":
+            badge.top = 26
+            badge.left = 22
+        elif position == "bottom_right":
+            badge.top = 26
+            badge.right = 50
+        else:
+            badge.bottom = 26
+            badge.right = 50
 
         return badge
 
@@ -69,8 +78,8 @@ def main(page: Page):
         Badge(position="top_left"),
         Badge(cupertino_icons.CART, position="center_left", count=105, max_value=99),
         Badge(count=15, badge_color="purple500", position="top_left", max_value=9),
-        Badge(count=105, badge_color="blue", position="center_left", max_value=99),
-        Badge(count=1005, position="center_left", max_value=999),
+        Badge(count=105, badge_color="blue", position="top_right", max_value=99),
+        Badge(count=1005, position="bottom_right", max_value=999),
     )
 
 
