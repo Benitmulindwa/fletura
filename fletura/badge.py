@@ -5,13 +5,15 @@ class Badge(Container):
     def __init__(
         self,
         badge_icon: str = icons.MAIL,
-        icon_color="white",
+        icon_color: str = "white",
+        badge_color: str = "red",
         count: int = 19,
         max_value: int = 9,
         position: str = "top_left",
     ):
         super().__init__()
         self.max_value = max_value
+        self.badge_color = badge_color
         self.content = Stack(
             [
                 Container(
@@ -44,7 +46,7 @@ class Badge(Container):
                 size=11,
                 text_align="center",
             ),
-            bgcolor="red",
+            bgcolor=self.badge_color,
             border_radius=badge_width // 2,
             width=badge_width,
             height=badge_width,
