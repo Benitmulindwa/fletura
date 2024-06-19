@@ -10,6 +10,7 @@ class CardMedia(Container):
         title: str = "Lizard",
         title_style: TextStyle = None,
         description: str = "",
+        long_description: str = None,
         description_style: TextStyle = None,
     ):
         super().__init__()
@@ -22,37 +23,44 @@ class CardMedia(Container):
         self.expanded = False
 
         self.expanded_container = Container(
-            Text(
-                """To make the container expand when the drop-down icon is clicked, you can add a callback function that toggles the expansion of the description. This involves updating the visibility and possibly the size of the container when the icon is clicked. Here's how you can implement this:
-
-Define a method to handle the expansion.
-Add state to keep track of whether the card is expanded.
-Update the icon button to toggle the expansion state.
-Here's the complete code for the CardMedia class and the main function:
-Define a method to handle the expansion.
-Add state to keep track of whether the card is expanded.
-Update the icon button to toggle the expansion state.
-Here's the complete code for the CardMedia class and the main function:"""
-            ),
+            ListView([Text(long_description)], auto_scroll=1),
             visible=False,
             padding=padding.only(10, right=10),
+            margin=margin.only(bottom=10),
+            # height=200,
+        )
+        self.image_container = Container(
+            Image(
+                src=image_src,
+                fit="cover",
+                height=140,
+                width=self.width,
+            ),
+            alignment=alignment.center,
+            margin=margin.all(0),
+            width=400,
+        )
+        # A container to contain all the actions
+        self.actions_row = Container(
+            Row(
+                [
+                    *(action for action in actions),
+                    Row(expand=True),
+                    Container(
+                        IconButton(icons.ARROW_DROP_DOWN, on_click=self.toggle_expand)
+                        if can_expand == True
+                        else None
+                    ),
+                ],
+                spacing=0,
+                alignment="start",
+            ),
+            margin=margin.only(top=5, right=10),
         )
 
         self.content = Column(
             [
-                Container(
-                    Image(
-                        src=image_src,
-                        fit="cover",
-                        # border,
-                        height=140,
-                        width=self.width,
-                    ),
-                    alignment=alignment.center,
-                    margin=margin.all(0),
-                    # height=140,
-                    width=400,
-                ),
+                self.image_container,
                 Container(
                     Column(
                         [
@@ -70,24 +78,7 @@ Here's the complete code for the CardMedia class and the main function:"""
                     ),
                     padding=padding.only(left=10, top=10, right=10),
                 ),
-                Container(
-                    Row(
-                        [
-                            *(action for action in actions),
-                            Row(expand=True),
-                            Container(
-                                IconButton(
-                                    icons.ARROW_DROP_DOWN, on_click=self.toggle_expand
-                                )
-                                if can_expand == True
-                                else None
-                            ),
-                        ],
-                        spacing=0,
-                        alignment="start",
-                    ),
-                    margin=margin.only(top=5, right=10),
-                ),
+                self.actions_row,
                 self.expanded_container,
             ],
             spacing=0,
@@ -116,6 +107,25 @@ def main(page: Page):
             image_src="https://th.bing.com/th/id/R.5e510c21c45cefceb127a2280c789b72?rik=2ddR7LkLmjAIFA&pid=ImgRaw&r=0",
             description="Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
             can_expand=True,
+            long_description="""To make the container expand when the drop-down icon is clicked, you can add a callback function that toggles the expansion of the description. This involves updating the visibility and possibly the size of the container when the icon is clicked. Here's how you can implement this:
+
+Define a method to handle the expansion.
+Add state to keep track of whether the card is expanded.
+Update the icon button to toggle the expansion state.
+Here's the complete code for the CardMedia class and the main function:
+Define a method to handle the expansion.
+Add state to keep track of whether the card is expanded.
+Update the icon button to toggle the expansion state.
+Here's the complete code for the CardMedia class and the main function:
+Define a method to handle the expansion.
+Add state to keep track of whether the card is expanded.
+Update the icon button to toggle the expansion state.
+Here's the complete code for the CardMedia class and the main function:
+Define a method to handle the expansion.
+Add state to keep track of whether the card is expanded.
+Update the icon button to toggle the expansion state.
+Here's the complete code for the CardMedia class and the main function:
+""",
         )
     )
 
