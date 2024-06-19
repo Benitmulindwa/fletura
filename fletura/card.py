@@ -12,6 +12,8 @@ class CardMedia(Container):
         description: str = "",
         long_description: str = None,
         description_style: TextStyle = None,
+        action_area: bool = False,
+        on_click_action_area: ControlEvent = None,
     ):
         super().__init__()
 
@@ -91,13 +93,20 @@ class CardMedia(Container):
                 offset=Offset(0, 8),
             )
         ]
-        # self.on_click = lambda _: print("okokokkk")
+        # These events are trigged only if the action_area property True
+        self.on_click = on_click_action_area
+        self.on_hover = self.action_area if action_area else None
 
     def toggle_expand(self, e):
         self.expanded = not self.expanded
         self.expanded_container.visible = self.expanded
         e.control.icon = icons.ARROW_DROP_UP if self.expanded else icons.ARROW_DROP_DOWN
         self.update()
+
+    # trigged when the action_area is set to True & the Card is hovered by a cursor
+    def action_area(self, e):
+        e.control.opacity = 0.7 if e.data == "true" else 1.0
+        e.control.update()
 
 
 def main(page: Page):
@@ -107,6 +116,7 @@ def main(page: Page):
             image_src="https://th.bing.com/th/id/R.5e510c21c45cefceb127a2280c789b72?rik=2ddR7LkLmjAIFA&pid=ImgRaw&r=0",
             description="Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
             can_expand=True,
+            # action_area=True,
             long_description="""To make the container expand when the drop-down icon is clicked, you can add a callback function that toggles the expansion of the description. This involves updating the visibility and possibly the size of the container when the icon is clicked. Here's how you can implement this:
 
 Define a method to handle the expansion.
