@@ -6,7 +6,6 @@ class CardMedia(Container):
         self,
         actions: list = [TextButton("SHARE"), TextButton("LEARN MORE")],
         title: str = "Lizard",
-        outlined: bool = False,
     ):
         super().__init__()
 
@@ -20,6 +19,7 @@ class CardMedia(Container):
                     Image(
                         src="https://th.bing.com/th/id/R.5e510c21c45cefceb127a2280c789b72?rik=2ddR7LkLmjAIFA&pid=ImgRaw&r=0",
                         fit="cover",
+                        # border,
                         height=140,
                         width=self.width,
                     ),
@@ -49,13 +49,11 @@ class CardMedia(Container):
             ],
             spacing=0,
         )
-        if outlined:
-            self.border = border.all(width=2, color="#80868B")
 
 
 def main(page: Page):
     page.bgcolor = "blue700"
-    page.add(CardMedia(outlined=True))
+    page.add(CardMedia())
 
 
 if __name__ == "__main__":

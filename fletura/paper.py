@@ -9,7 +9,7 @@ class Paper(Container):
         bgcolor: str,
         width: int,
         height: int,
-        outlined: str = False,
+        outlined: bool = False,
         elevation: int = 1,
         content: Control = None,
         on_click: ControlEvent = None,
