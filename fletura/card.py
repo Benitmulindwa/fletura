@@ -5,8 +5,9 @@ class CardMedia(Container):
     def __init__(
         self,
         image_src: str,
+        image_height: int = 140,
         can_expand: bool = False,
-        actions: list = [TextButton("SHARE"), TextButton("LEARN MORE")],
+        actions: list = None,
         title: str = "Lizard",
         title_style: TextStyle = None,
         description: str = "",
@@ -35,7 +36,7 @@ class CardMedia(Container):
             Image(
                 src=image_src,
                 fit="cover",
-                height=140,
+                height=image_height,
                 width=self.width,
             ),
             alignment=alignment.center,
@@ -116,18 +117,11 @@ def main(page: Page):
         CardMedia(
             image_src="https://th.bing.com/th/id/R.5e510c21c45cefceb127a2280c789b72?rik=2ddR7LkLmjAIFA&pid=ImgRaw&r=0",
             description="Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
+            actions=[TextButton("SHARE"), TextButton("LEARN MORE")],
             can_expand=True,
             # action_area=True,
             long_description="""To make the container expand when the drop-down icon is clicked, you can add a callback function that toggles the expansion of the description. This involves updating the visibility and possibly the size of the container when the icon is clicked. Here's how you can implement this:
 
-Define a method to handle the expansion.
-Add state to keep track of whether the card is expanded.
-Update the icon button to toggle the expansion state.
-Here's the complete code for the CardMedia class and the main function:
-Define a method to handle the expansion.
-Add state to keep track of whether the card is expanded.
-Update the icon button to toggle the expansion state.
-Here's the complete code for the CardMedia class and the main function:
 Define a method to handle the expansion.
 Add state to keep track of whether the card is expanded.
 Update the icon button to toggle the expansion state.
