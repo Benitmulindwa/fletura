@@ -97,6 +97,7 @@ class CardMedia(Container):
         self.on_click = on_click_action_area
         self.on_hover = self.action_area if action_area else None
 
+    # when the dropdown iconbutton is clicked
     def toggle_expand(self, e):
         self.expanded = not self.expanded
         self.expanded_container.visible = self.expanded
