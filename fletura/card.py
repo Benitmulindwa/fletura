@@ -13,6 +13,7 @@ class CardMedia(Container):
         self.width = 300
         self.border_radius = 10
         self.padding = padding.only(bottom=10)
+        # self.blur = 30
         self.content = Column(
             [
                 Container(
@@ -49,10 +50,18 @@ class CardMedia(Container):
             ],
             spacing=0,
         )
+        self.shadow = [
+            BoxShadow(
+                spread_radius=6,
+                blur_radius=10,
+                color=colors.with_opacity(0.3, "black"),
+                offset=Offset(0, 8),
+            )
+        ]
 
 
 def main(page: Page):
-    page.bgcolor = "blue700"
+
     page.add(CardMedia())
 
 
