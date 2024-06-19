@@ -6,6 +6,7 @@ class CardMedia(Container):
         self,
         actions: list = [TextButton("SHARE"), TextButton("LEARN MORE")],
         title: str = "Lizard",
+        title_color: str = "white",
     ):
         super().__init__()
 
@@ -33,7 +34,12 @@ class CardMedia(Container):
                     Column(
                         [
                             Container(
-                                Text(f"{title}", size=20, weight=FontWeight.BOLD)
+                                Text(
+                                    f"{title}",
+                                    size=20,
+                                    weight=FontWeight.BOLD,
+                                    color=title_color,
+                                )
                             ),
                             Text(
                                 "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"
@@ -58,6 +64,7 @@ class CardMedia(Container):
                 offset=Offset(0, 8),
             )
         ]
+        # self.on_click = lambda _: print("okokokkk")
 
 
 def main(page: Page):
