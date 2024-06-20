@@ -125,11 +125,6 @@ def main(page: Page):
 Define a method to handle the expansion.
 Add state to keep track of whether the card is expanded.
 Update the icon button to toggle the expansion state.
-Here's the complete code for the CardMedia class and the main function:
-Define a method to handle the expansion.
-Add state to keep track of whether the card is expanded.
-Update the icon button to toggle the expansion state.
-Here's the complete code for the CardMedia class and the main function:
 """,
         )
     )
