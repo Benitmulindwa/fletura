@@ -43,6 +43,7 @@ class TimelineEvent(Container):
                             bgcolor="white",
                             alignment=alignment.center,
                             margin=margin.only(top=5),
+                            #
                         ),
                     ],
                     alignment="center",
