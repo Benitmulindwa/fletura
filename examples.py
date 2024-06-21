@@ -1,5 +1,5 @@
 from flet import *
-from fletura import Paper, Rating, Badge
+from fletura import Paper, Rating, Dock, CardMedia, Timeline
 
 
 def main(page: Page):
@@ -17,10 +17,10 @@ def main(page: Page):
             rating_type="readonly",
             size="large",
         ),
-        Text("Badge Component"),
-        Badge(position="top_left"),
-        Badge(cupertino_icons.CART, position="center_left", count=105, max_value=99),
-        Badge(count=15, badge_color="purple500", position="top_left", max_value=9),
+        Text("Dock Component", size=20, weight=FontWeight.BOLD),
+        Dock(position="top_left"),
+        Dock(cupertino_icons.CART, position="center_left", count=105, max_value=99),
+        Dock(count=15, dock_color="purple500", position="top_left", max_value=9),
     )
 
 

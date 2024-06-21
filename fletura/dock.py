@@ -1,44 +1,44 @@
 from flet import *
 
 
-class Badge(Container):
+class Dock(Container):
     def __init__(
         self,
-        badge_icon: str = icons.MAIL,
+        dock_icon: str = icons.MAIL,
         icon_color: str = "white",
-        badge_color: str = "red",
+        dock_color: str = "red",
         count: int = 4,
         max_value: int = 9,
         position: str = "top_left",
     ):
         super().__init__()
         self.max_value = max_value
-        self.badge_color = badge_color
+        self.dock_color = dock_color
         self.content = Stack(
             [
                 Container(
-                    Icon(badge_icon, color=icon_color, size=30),
+                    Icon(dock_icon, color=icon_color, size=30),
                     height=50,
                     width=60,
                     margin=margin.only(left=-16 if "left" in position else 5, right=15),
                 ),
-                self.create_badge(count, position),
+                self.create_dock(count, position),
             ]
         )
 
         self.alignment = alignment.center
 
-    def create_badge(self, count: int, position: str):
+    def create_dock(self, count: int, position: str):
         display_count = f"{count}" if count <= self.max_value else f"{self.max_value}+"
 
         # Adjasting the top container size based on whether a single,2 or 3 digits number are given
-        badge_width = 20  # default width for single-digit numbers
+        dock_width = 20  # default width for single-digit numbers
         if self.max_value >= 10:
-            badge_width = 25  # width for two-digit numbers
+            dock_width = 25  # width for two-digit numbers
         if self.max_value >= 100:
-            badge_width = 30  # width for three-digit numbers
+            dock_width = 30  # width for three-digit numbers
 
-        badge = Container(
+        dock = Container(
             Text(
                 display_count,
                 color="white",
@@ -46,40 +46,40 @@ class Badge(Container):
                 size=11,
                 text_align="center",
             ),
-            bgcolor=self.badge_color,
-            border_radius=badge_width // 2,
-            width=badge_width,
+            bgcolor=self.dock_color,
+            border_radius=dock_width // 2,
+            width=dock_width,
             height=20,
             alignment=alignment.center,
         )
         if position == "top_left":
-            badge.bottom = 26
-            badge.left = 22
+            dock.bottom = 26
+            dock.left = 22
         elif position == "center_left":
-            badge.top = 15
-            badge.left = 22
+            dock.top = 15
+            dock.left = 22
         elif position == "bottom_left":
-            badge.top = 26
-            badge.left = 22
+            dock.top = 26
+            dock.left = 22
         elif position == "bottom_right":
-            badge.top = 26
-            badge.right = 50
+            dock.top = 26
+            dock.right = 50
         else:
-            badge.bottom = 26
-            badge.right = 50
+            dock.bottom = 26
+            dock.right = 50
 
-        return badge
+        return dock
 
 
 def main(page: Page):
     page.vertical_alignment = "center"
     page.horizontal_alignment = "center"
     page.add(
-        Badge(position="top_left"),
-        Badge(cupertino_icons.CART, position="center_left", count=105, max_value=99),
-        Badge(count=15, badge_color="purple500", position="top_left", max_value=9),
-        Badge(count=105, badge_color="blue", position="top_right", max_value=99),
-        Badge(count=1005, position="bottom_right", max_value=999),
+        Dock(position="top_left"),
+        Dock(cupertino_icons.CART, position="center_left", count=105, max_value=99),
+        Dock(count=15, dock_color="purple500", position="top_left", max_value=9),
+        Dock(count=105, dock_color="blue", position="top_right", max_value=99),
+        Dock(count=1005, position="bottom_right", max_value=999),
     )
 
 

@@ -182,14 +182,13 @@ def main(page: Page):
             # "icon": icons.DATE_RANGE,
             # "icon_size": 20,
             "dot_props": {
-                # "border_color": "red",
                 # "border_radius": 2,
                 # "dot_border_radius": 0,
                 "border": border.all(2, color="green"),
             },
             "content_position": 0,
             "separator_props": {
-                # "color": colors.BLUE,
+                "color": colors.BLUE_200,
                 # "width": 3,
                 "height": 70,
                 "margin": margin.only(top=5),
