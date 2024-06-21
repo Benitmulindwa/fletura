@@ -147,7 +147,7 @@ def main(page: Page):
             },
             "content_position": 0,
             "separator_props": {
-                # "color": colors.BLUE,
+                "color": colors.GREEN_500,
                 # "width": 3,
                 "height": 70,
                 "margin": margin.only(top=5),
