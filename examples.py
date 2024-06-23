@@ -3,6 +3,8 @@ from fletura import Paper, Rating, Dock, CardMedia, Timeline
 
 
 def main(page: Page):
+    page.theme_mode = "light"
+    page.bgcolor = colors.GREY_300
     page.add(
         Paper(
             bgcolor="#ffffff",
