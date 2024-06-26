@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fletura"
+version = "1.0.0"
+description = "A Material UI flet library"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Benit Mulindwa", email = "mulindwabenit@gmail.com", homepage = "https://github.com/Benitmulindwa"},
+]
+dependencies = [
+    "flet",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+urls = { "Homepage" = "https://github.com/Benitmulindwa/fletura" }
