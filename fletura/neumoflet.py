@@ -8,35 +8,6 @@ class ShadowPosition:
     BOTTOM_LEFT: tuple = (-5, 5)
 
 
-class NeumorphicOval(Container):
-    def __init__(self, diameter: int, **kwargs):
-        super().__init__(
-            width=diameter,
-            height=diameter,
-            border_radius=diameter // 2,
-            bgcolor="blue",
-            # gradient=RadialGradient(colors=["blue200", "blue900"]),
-            shadow=[
-                BoxShadow(
-                    # spread_radius=1,
-                    blur_radius=6,
-                    color=colors.with_opacity(0.0, colors.BLACK12),
-                    offset=Offset(-5, -5),
-                    # blur_style=ShadowBlurStyle.INNER,
-                ),
-                BoxShadow(
-                    # spread_radius=1,
-                    blur_radius=6,
-                    color=colors.with_opacity(0.5, colors.BLACK),
-                    offset=Offset(5, 5),
-                    # blur_style=ShadowBlurStyle.OUTER,
-                ),
-            ],
-            **kwargs,
-        )
-        self.alignment = alignment.center
-
-
 class FlatContainer(Container):
     def __init__(self, width: int, height: int, **kwargs):
         super().__init__(
@@ -149,11 +120,6 @@ def main(page: Page):
         height=100,
     )
 
-    neumorphic_oval = NeumorphicOval(
-        content=Text("thin is a text", color="black"),
-        diameter=100,
-    )
-
     page.add(
         Column(
             [
@@ -161,7 +127,6 @@ def main(page: Page):
                 neumorphic_pressed_button,
                 neumorphic_floating_container,
                 neumorphic_card,
-                neumorphic_oval,
             ],
             alignment="center",
             spacing=20,
