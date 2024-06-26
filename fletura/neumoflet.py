@@ -13,21 +13,23 @@ class NeumorphicOval(Container):
         super().__init__(
             width=diameter,
             height=diameter,
-            border_radius=diameter * 2,
+            border_radius=diameter // 2,
+            bgcolor="blue",
+            # gradient=RadialGradient(colors=["blue200", "blue900"]),
             shadow=[
                 BoxShadow(
                     # spread_radius=1,
                     blur_radius=6,
-                    color=colors.with_opacity(0.5, colors.WHITE),
-                    offset=Offset(-1, -1),
-                    blur_style=ShadowBlurStyle.INNER,
+                    color=colors.with_opacity(0.0, colors.BLACK12),
+                    offset=Offset(-5, -5),
+                    # blur_style=ShadowBlurStyle.INNER,
                 ),
                 BoxShadow(
                     # spread_radius=1,
                     blur_radius=6,
                     color=colors.with_opacity(0.5, colors.BLACK),
-                    offset=Offset(1, 1),
-                    blur_style=ShadowBlurStyle.OUTER,
+                    offset=Offset(5, 5),
+                    # blur_style=ShadowBlurStyle.OUTER,
                 ),
             ],
             **kwargs,
@@ -99,7 +101,9 @@ class FloatingContainer(Container):
         width: int,
         height: int,
         border_radius=10,
-        bgcolor=colors.GREY_200,
+        bgcolor: str = colors.GREY_200,
+        shadow1_color: str = colors.WHITE,
+        shadow2_color: str = colors.BLACK,
         shadow_position: ShadowPosition = ShadowPosition.BOTTOM_RIGHT,
         **kwargs
     ):
@@ -113,13 +117,13 @@ class FloatingContainer(Container):
                 BoxShadow(
                     spread_radius=1,
                     blur_radius=6,
-                    color=colors.with_opacity(0.2, colors.WHITE),
+                    color=colors.with_opacity(0.2, shadow1_color),
                     offset=Offset(-shadow_position[0], -shadow_position[1]),
                 ),
                 BoxShadow(
                     spread_radius=1,
                     blur_radius=6,
-                    color=colors.with_opacity(0.2, colors.BLACK),
+                    color=colors.with_opacity(0.2, shadow2_color),
                     offset=Offset(*shadow_position),
                 ),
             ],
@@ -147,7 +151,7 @@ def main(page: Page):
 
     neumorphic_oval = NeumorphicOval(
         content=Text("thin is a text", color="black"),
-        diameter=150,
+        diameter=100,
     )
 
     page.add(
