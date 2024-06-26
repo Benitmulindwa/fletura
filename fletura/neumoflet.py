@@ -36,13 +36,14 @@ class ConvexContainer(Container):
         elevation: float = 0.0,
         shadow1_color: str = "white",
         shadow2_color: str = "black",
+        border_radius=10,
         **kwargs
     ):
         super().__init__(
             width=width,
             height=height,
             alignment=alignment.center,
-            border_radius=10,
+            border_radius=border_radius,
             gradient=LinearGradient(
                 colors=["#cacaca", "#f0f0f0"],
                 end=alignment.top_left,
@@ -53,13 +54,13 @@ class ConvexContainer(Container):
                     spread_radius=1,
                     blur_radius=10,
                     color=colors.with_opacity(elevation, shadow1_color),
-                    offset=Offset(1, 1),
+                    offset=Offset(-1, -1),
                 ),
                 BoxShadow(
                     spread_radius=1,
                     blur_radius=10,
-                    color=colors.with_opacity(elevation, shadow2_color),
-                    offset=Offset(-1, -1),
+                    color=colors.with_opacity(elevation / 2, shadow2_color),
+                    offset=Offset(1, 1),
                 ),
             ],
             **kwargs,
@@ -111,7 +112,12 @@ def main(page: Page):
 
     neumorphic_flat_button = FlatContainer("Flat Button", height=50)
     neumorphic_pressed_button = ConvexContainer(
-        width=200, height=50, content=Text("Convex Container", color="black")
+        width=100,
+        height=100,
+        border_radius=50,
+        padding=padding.only(20),
+        elevation=0.4,
+        content=Text("Convex Container", color="black"),
     )
     neumorphic_floating_container = FloatingContainer(100, 100)
     neumorphic_card = FloatingContainer(
