@@ -44,12 +44,6 @@ class FlatContainer(Container):
             alignment=alignment.center,
             border_radius=10,
             shadow=[
-                # BoxShadow(
-                #     spread_radius=1,
-                #     blur_radius=6,
-                #     color=colors.with_opacity(0.5, colors.WHITE),
-                #     offset=Offset(-3, -3),
-                # ),
                 BoxShadow(
                     spread_radius=1,
                     blur_radius=6,
