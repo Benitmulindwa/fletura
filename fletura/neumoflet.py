@@ -5,7 +5,7 @@ class NeumorphicOval(Container):
     def __init__(self, diameter: int, **kwargs):
         super().__init__(
             width=diameter,
-            height=diameter // 3,
+            height=diameter,
             border_radius=diameter * 2,
             shadow=[
                 BoxShadow(
@@ -29,12 +29,11 @@ class NeumorphicOval(Container):
 
 
 class FlatContainer(Container):
-    def __init__(self, text: str, **kwargs):
+    def __init__(self, width: int, height: int, **kwargs):
         super().__init__(
-            content=Text(text, color=colors.GREY_800),
             bgcolor=colors.GREY_200,
-            width=100,
-            height=50,
+            width=width,
+            height=height,
             alignment=alignment.center,
             border_radius=10,
             shadow=[
@@ -55,28 +54,40 @@ class FlatContainer(Container):
         )
 
 
-class PressedContainer(Container):
-    def __init__(self, text: str, **kwargs):
+class ConvexContainer(Container):
+    def __init__(
+        self,
+        width: int,
+        height: int,
+        elevation: float = 0.0,
+        shadow1_color: str = "white",
+        shadow2_color: str = "black",
+        **kwargs
+    ):
         super().__init__(
-            content=Text(text, color=colors.GREY_800),
-            # bgcolor=colors.GREY_200,
-            bgcolor="black",
-            width=100,
-            height=50,
+            width=width,
+            height=height,
             alignment=alignment.center,
             border_radius=10,
             gradient=LinearGradient(
-                colors=[colors.GREY_200, colors.GREY_300],
-                begin=alignment.bottom_center,
-                end=alignment.top_center,
+                colors=["#cacaca", "#f0f0f0"],
+                end=alignment.top_left,
+                begin=alignment.center_right,
             ),
-            shadow=BoxShadow(
-                spread_radius=1,
-                blur_radius=15,
-                color=colors.with_opacity(0.3, colors.BLACK),
-                offset=Offset(3, 3),
-                # blur_style=ShadowBlurStyle.OUTER,
-            ),
+            shadow=[
+                BoxShadow(
+                    spread_radius=1,
+                    blur_radius=10,
+                    color=colors.with_opacity(elevation, shadow1_color),
+                    offset=Offset(1, 1),
+                ),
+                BoxShadow(
+                    spread_radius=1,
+                    blur_radius=10,
+                    color=colors.with_opacity(elevation, shadow2_color),
+                    offset=Offset(-1, -1),
+                ),
+            ],
             **kwargs,
         )
 
@@ -146,17 +157,17 @@ def main(page: Page):
     page.horizontal_alignment = "center"
     page.vertical_alignment = "center"
     page.padding = 20
-    page.theme_mode = "light"
+    page.theme_mode = "dark"
 
-    neumorphic_flat_button = FlatContainer("Flat Button")
-    neumorphic_pressed_button = PressedContainer("Pressed Button")
+    neumorphic_flat_button = FlatContainer("Flat Button", height=50)
+    neumorphic_pressed_button = ConvexContainer(
+        width=200, height=50, content=Text("Convex Container")
+    )
     neumorphic_floating_container = NeumorphicFloatingContainer(100, 100)
     neumorphic_card = NeumorphicCard("Neumorphic Card", "This is a neumorphic card.")
 
     neumorphic_oval = NeumorphicOval(
-        content=Text(
-            "thin is a text",
-        ),
+        content=Text("thin is a text", color="black"),
         diameter=150,
     )
 
