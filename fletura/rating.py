@@ -1,6 +1,6 @@
 from flet import *
 from dataclasses import dataclass
-import re
+
 
 
 @dataclass
