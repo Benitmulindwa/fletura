@@ -1,2 +1,2 @@
 # fletura
-A python library for custom components in flet
+A material UI built with flet library
