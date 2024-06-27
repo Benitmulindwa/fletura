@@ -41,9 +41,7 @@ def main(page):
 card = CardMedia(
             image_src="https://th.bing.com/th/id/R.5e510c21c45cefceb127a2280c789b72?rik=2ddR7LkLmjAIFA&pid=ImgRaw&r=0",
             description="Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
-            description_style=TextStyle(
-                color="white"
-            ),
+            description_style=TextStyle(color="white"),
             actions=[
                 TextButton("SHARE"),
                 TextButton("LEARN MORE"),
@@ -69,12 +67,12 @@ Cards are surfaces that display content and actions related to a single topic.
 - **description (str):** The main content of the card.
 - **description_style (TextStyle):** Style to be applied on both the card description and the long_description text(if provided)
 - **long_descriprion (str):** Text to be displayed as a long description of the card content(**can_expand** must be True)
-- **actions (list):** A list of action buttons for the card.
-- **can_expand (bool):** This applied only for cards with a long description, it gives the ability to expand
+- **actions (list):** A list of action buttons or any controls for the card.
+- **can_expand (bool):** This is applied only for cards with a long description, it gives the ability to expand
 - **action_area (bool):** If True the entire card will be clickable, and the **on_click_action_area** event must be handled
 - **width:** The cardMedia width, default value is 300
 
-### Example
+### Examples
 ```python
 # CardMedia without a long description
 CardMedia(
@@ -103,3 +101,7 @@ CardMedia(
           title_style=TextStyle(color="white"),
       ),
 ```
+## Dock
+## Rating
+## Paper
+## Neumorphic
