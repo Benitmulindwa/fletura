@@ -105,3 +105,11 @@ CardMedia(
 ## Rating
 ## Paper
 ## Neumorphic
+
+# Contributing
+Contributions are welcome! Please read the CONTRIBUTING.md for guidelines on how to contribute to this project.
+
+# License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+Thank you for using the Flet Components Library! If you have any questions or feedback, feel free to open an issue or submit a pull request.
