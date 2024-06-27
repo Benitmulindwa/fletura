@@ -9,10 +9,9 @@ class ShadowPosition:
 
 
 class FlatContainer(Container):
-    def __init__(self, width: int, height: int, **kwargs):
+    def __init__(self, height: int, **kwargs):
         super().__init__(
             bgcolor=colors.GREY_200,
-            width=width,
             height=height,
             alignment=alignment.center,
             border_radius=10,
@@ -37,7 +36,7 @@ class ConvexContainer(Container):
         shadow1_color: str = "white",
         shadow2_color: str = "black",
         border_radius=10,
-        **kwargs
+        **kwargs,
     ):
         super().__init__(
             width=width,
@@ -77,7 +76,7 @@ class FloatingContainer(Container):
         shadow1_color: str = colors.WHITE,
         shadow2_color: str = colors.BLACK,
         shadow_position: ShadowPosition = ShadowPosition.BOTTOM_RIGHT,
-        **kwargs
+        **kwargs,
     ):
         super().__init__(
             bgcolor=bgcolor,

@@ -7,7 +7,7 @@ class CardMedia(Container):
         image_src: str,
         image_height: int = 140,
         can_expand: bool = False,
-        actions: list = None,
+        actions: list = [],
         title: str = "Lizard",
         title_style: TextStyle = None,
         description: str = "",
