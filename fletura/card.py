@@ -15,8 +15,9 @@ class CardMedia(Container):
         description_style: TextStyle = None,
         action_area: bool = False,
         on_click_action_area: ControlEvent = None,
+        **kwargs
     ):
-        super().__init__()
+        super().__init__(**kwargs)
 
         self.bgcolor = "black"
         self.width = 300
@@ -26,7 +27,7 @@ class CardMedia(Container):
         self.expanded = False
 
         self.expanded_container = Container(
-            ListView([Text(long_description)], auto_scroll=1),
+            ListView([Text(long_description, style=description_style)], auto_scroll=1),
             visible=False,
             padding=padding.only(10, right=10),
             margin=margin.only(bottom=10),
