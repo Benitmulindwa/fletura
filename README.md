@@ -103,7 +103,7 @@ CardMedia(
 ## Neumorphic
 
 # Contributing
-Contributions are welcome! Please read the CONTRIBUTING.md for guidelines on how to contribute to this project.
+Contributions are welcome! just PR
 
 # License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
