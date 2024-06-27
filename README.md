@@ -82,9 +82,7 @@ CardMedia(
             TextButton("SHARE"),
             TextButton("LEARN MORE"),
         ],
-        description_style=TextStyle(
-            color="white"
-        ),
+        description_style=TextStyle(color="white"),
         title_style=TextStyle(color="white"),
     ),
 ```
@@ -95,9 +93,7 @@ CardMedia(
           description="Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
           action_area=True,
           actions=[],
-          description_style=TextStyle(
-              color="white"
-          ),
+          description_style=TextStyle(color="white"),
           title_style=TextStyle(color="white"),
       ),
 ```
@@ -111,5 +107,5 @@ Contributions are welcome! Please read the CONTRIBUTING.md for guidelines on how
 
 # License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
+#
 Thank you for using the Flet Components Library! If you have any questions or feedback, feel free to open an issue or submit a pull request.
