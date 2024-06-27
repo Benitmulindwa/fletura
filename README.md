@@ -59,6 +59,7 @@ ft.app(target=main)
 
 ## CardMedia
 Cards are surfaces that display content and actions related to a single topic.
+(inherits from Container)
 ### Props
 
 - **image_src (str):** Image source
@@ -98,6 +99,23 @@ CardMedia(
       ),
 ```
 ## Dock
+Dock component puts a container on one of the corners of an other control(usually an icon)
+### Props
+- **dock_icon (str):** An icon, Mail icon is the default one
+- **icon_color (str):** The icon color
+- **dock_color (str):** color of the container
+- **count (int):** The count to be displayed,
+- **max_value (int):** the maximum value to be displayed,
+- **position (str):** Postion of the top container(top_right, bottom_left, bottom_right) by default "top_left",
+
+### Examples:
+```python
+Dock(position="top_left"), 
+Dock(cupertino_icons.CART, position="center_left", count=105, max_value=99),
+Dock(count=15, dock_color="purple500", position="top_left", max_value=9),
+Dock(count=105, dock_color="blue", position="top_right", max_value=99),
+Dock(count=1005, position="bottom_right", max_value=999)
+```
 ## Rating
 ## Paper
 ## Neumorphic
