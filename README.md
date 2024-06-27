@@ -12,6 +12,7 @@ A collection of reusable Flet components to enhance your application development
 - [Usage](#usage)
 - [Components](#components)
   - [CardMedia](#cardmedia)
+  - [Dock](#dock)
   - [Timeline](#timeline)
   - [Rating](#rating)
   - [Paper](#paper)
