@@ -15,15 +15,16 @@ class CardMedia(Container):
         description_style: TextStyle = None,
         action_area: bool = False,
         on_click_action_area: ControlEvent = None,
-        **kwargs
+        width=300,
+        **kwargs,
     ):
         super().__init__(**kwargs)
 
         self.bgcolor = "black"
-        self.width = 300
+        self.width = width
         self.border_radius = 10
         self.padding = padding.only(bottom=10)
-        # self.blur = 30
+
         self.expanded = False
 
         self.expanded_container = Container(
