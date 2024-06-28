@@ -117,6 +117,44 @@ Dock(count=105, dock_color="blue", position="top_right", max_value=99),
 Dock(count=1005, position="bottom_right", max_value=999)
 ```
 ## Rating
+Ratings provide insight regarding others' opinions and experiences, and can allow the user to submit a rating of their own.
+### Props
+- **rating_type: (str)** "controlled","readonly" or "disabled".
+- **max_value (int):** number of rating icons.
+- **rating_value (float):** Works when "disabled" or "readonly" is selected.
+- **rating_icon (str):** Rating icont, by default it's *icons.STAR_OUTLINE_OUTLINED*.
+- **size (str):** The size of the rating icons,small "large".
+- **color (str):** icon border color by default it's "colors.WHITE".
+- **selection_color (str):** the icon_color when selected by default "colors.ORANGE".
+- **selection_icon (str):** the icon when selected, by default it's  "icons.STAR".
+- **half_icon (str):** takes in account float rating values Works when "disabled" or "readonly" is selected, by defaulf "icons.STAR_HALF".
+- **on_hover_color (str):** color on hover by default "colors.ORANGE".
+  
+### Examples:
+
+```python
+Rating(
+    rating_icon=icons.STAR_OUTLINE_OUTLINED,
+    selection_icon=icons.STAR,
+    max_value=5,
+    rating_type=RatingType.CONTROLLED,
+    ),
+Rating(
+  max_value=5,
+  selection_icon=icons.STAR,
+  rating_value=2.5,
+  rating_type=RatingType.READONLY,
+  size="large",
+),
+Rating(
+  rating_icon=cupertino_icons.HEART,
+  selection_icon=cupertino_icons.HEART_FILL,
+  half_icon=icons.HEART_BROKEN_OUTLINED,
+  max_value=5,
+  rating_value=1.5,
+  rating_type=RatingType.DISABLED,
+),
+```
 ## Paper
 ## Neumorphic
 
