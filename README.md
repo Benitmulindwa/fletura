@@ -156,6 +156,22 @@ Rating(
 ),
 ```
 ## Paper
+A component for displaying content on an elevated surface.
+(inherits from container)
+### Props
+- **outlined (bool):** "True" if the Paper will be outlined otherwise False,
+- **elevation (int):** Defines how much the Paper will be elevated (0,1,2,3,4,8,12,16 and 24) by default elevation = 1,
+### Examples
+```python
+Paper(
+      elevation=8,
+      width=200,
+      height=50,
+      bgcolor="white",
+      outlined=True,
+      content=ft.Text(f"Elevation 8", color="black"),
+)
+```
 ## Neumorphic
 
 # Contributing
