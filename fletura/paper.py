@@ -6,21 +6,12 @@ from flet import *
 class Paper(Container):
     def __init__(
         self,
-        bgcolor: str,
-        width: int,
-        height: int,
         outlined: bool = False,
         elevation: int = 1,
-        content: Control = None,
-        on_click: ControlEvent = None,
+        alignment=ft.alignment.center,
+        **kwargs,
     ) -> None:
-        super().__init__(
-            content=content,
-            bgcolor=bgcolor,
-            width=width,
-            height=height,
-            on_click=on_click,
-        )
+        super().__init__(alignment=alignment**kwargs)
         self.elevation: int = elevation
         # Define the shadow parameters based on the distance
         self.shadow_params: dict = {
@@ -50,7 +41,7 @@ class Paper(Container):
         # Create the container with the specified shadow
         if outlined:
             self.border = border.all(width=2, color="#80868B")
-        self.alignment = ft.alignment.center
+
         self.shadow = shadows
 
 
