@@ -41,7 +41,6 @@ class Paper(Container):
         # Create the container with the specified shadow
         if outlined:
             self.border = border.all(width=2, color="#80868B")
-
         self.shadow = shadows
 
 

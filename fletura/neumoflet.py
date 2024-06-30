@@ -30,7 +30,6 @@ class FlatContainer(Container):
 class ConvexContainer(Container):
     def __init__(
         self,
-        width: int,
         height: int,
         elevation: float = 0.0,
         shadow1_color: str = "white",
@@ -39,7 +38,6 @@ class ConvexContainer(Container):
         **kwargs,
     ):
         super().__init__(
-            width=width,
             height=height,
             alignment=alignment.center,
             border_radius=border_radius,
@@ -69,7 +67,6 @@ class ConvexContainer(Container):
 class FloatingContainer(Container):
     def __init__(
         self,
-        width: int,
         height: int,
         border_radius=10,
         bgcolor: str = colors.GREY_200,
@@ -80,7 +77,6 @@ class FloatingContainer(Container):
     ):
         super().__init__(
             bgcolor=bgcolor,
-            width=width,
             height=height,
             alignment=alignment.center,
             border_radius=border_radius,
