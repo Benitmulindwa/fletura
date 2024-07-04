@@ -99,7 +99,8 @@ CardMedia(
       ),
 ```
 ## Dock
-Dock component puts a container on one of the corners of an other control(usually an icon)
+The Dock component is a customizable UI element designed to display notifications or status indicators in a visually appealing manner. It consists of an icon and a counter that indicates the number of notifications, items, or messages.
+
 ### Props
 - **dock_icon (str):** An icon, Mail icon is the default one
 - **icon_color (str):** The icon color
@@ -173,6 +174,96 @@ Paper(
 )
 ```
 ## Neumorphic
+## Timeline
+The Timeline component is a visually structured UI element designed to display a sequence of events or activities in a chronological order. It provides a clear and organized way to present the timeline of events, making it suitable for various applications like project tracking, historical data visualization, user activity logs, and more.
+
+### Define Event Data
+First, you need to define the data for each event. Each event can have a *title*, *description*, *timestamp*, and various customizable properties for the dot and separator. Here's a sample event list:
+
+```python
+events = [
+    {
+        "title": "Event 1",
+        "description": "This is the description for event 1.",
+        "timestamp": "2023-01-01 10:00 AM",
+        "dot_props": {
+            "border": border.all(2, color="blue"),
+        },
+        "separator_props": {
+            "color": colors.GREEN_500,
+            "height": 70,
+            "margin": margin.only(top=5),
+        },
+        "content_position": 25,
+    },
+    {
+        "title": "Event 2",
+        "description": "This is the description for event 2.",
+        "timestamp": "2023-02-01 12:00 PM",
+        "dot_props": {
+            "border": border.all(2, color="red"),
+        },
+        "separator_props": {
+            "height": 70,
+            "margin": margin.only(top=5),
+        },
+        "content_position": 25,
+    },
+    {
+        "title": "Event 3",
+        "description": "This is the description for event 3.",
+        "timestamp": "2023-03-01 02:00 PM",
+        "dot_props": {
+            "border": border.all(2, color="green"),
+        },
+        "separator_props": {
+            "color": colors.BLUE_200,
+            "height": 70,
+            "margin": margin.only(top=5),
+        },
+        "content_position": 20,
+    },
+]
+```
+### Create the Timeline Component
+Create an instance of the Timeline component and pass the list of events to it. Here’s how you do it:
+
+```python
+timeline = Timeline(events)
+```
+### Add the Timeline to the Page
+Finally, add the Timeline component to your Flet page
+
+### Explanation of Properties
+#### Event Properties
+- **title:** The title of the event.
+- **description:** A brief description of the event.
+- **timestamp:** The time or date of the event.
+- **dot_props:** Customization properties for the dot, such as border and color.
+- **separator_props:** Customization properties for the separator, such as color and height.
+- **content_position:** Adjusts the vertical spacing of the content.
+  
+### Customization Options.
+#### Dot Customization (dot_props):
+- **icon((str):** Icon for the dot (if any).
+- **icon_size:** Size of the icon.
+- **icon_color:** Color of the icon.
+- **dot_size:** Size of the dot.
+- **dot_border_radius:** Border radius for the dot.
+- (Inherits from Container control) 
+  
+#### Separator Customization (separator_props):
+
+- **color:** Color of the separator.
+- **width:** Width of the separator.
+- **height:** Height of the separator.
+- 
+#### Text Styles:
+
+- **title_style:** Text style for the title.
+- **description_style:** Text style for the description.
+- **timestamp_style:** Text style for the timestamp.
+
 
 # Contributing
 Contributions are welcome! just PR
