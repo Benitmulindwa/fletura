@@ -52,7 +52,7 @@ class Dock(Container):
             height=20,
             alignment=alignment.center,
         )
-        if position == "top_left":
+        if position == "top_right":
             dock.bottom = 26
             dock.left = 22
         elif position == "center_left":
@@ -64,7 +64,7 @@ class Dock(Container):
         elif position == "bottom_right":
             dock.top = 26
             dock.right = 50
-        else:
+        elif position == "top_right":
             dock.bottom = 26
             dock.right = 50
 
