@@ -64,7 +64,7 @@ class Dock(Container):
         elif position == "bottom_right":
             dock.top = 26
             dock.right = 50
-        elif position == "top_right":
+        elif position == "top_left":
             dock.bottom = 26
             dock.right = 50
 
