@@ -99,7 +99,8 @@ CardMedia(
       ),
 ```
 ## Dock
-Dock component puts a container on one of the corners of an other control(usually an icon)
+The Dock component is a customizable UI element designed to display notifications or status indicators in a visually appealing manner. It consists of an icon and a counter that indicates the number of notifications, items, or messages.
+
 ### Props
 - **dock_icon (str):** An icon, Mail icon is the default one
 - **icon_color (str):** The icon color
@@ -173,6 +174,7 @@ Paper(
 )
 ```
 ## Neumorphic
+## Timelinr
 
 # Contributing
 Contributions are welcome! just PR
