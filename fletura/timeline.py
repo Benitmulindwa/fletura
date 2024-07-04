@@ -10,14 +10,14 @@ class TimelineDot(Container):
         dot_size: int = 5,
         dot_border_radius: int = 50,
         border: Border = border.all(3, color="white"),
-        **kwargs
+        **kwargs,
     ):
         super().__init__(**kwargs)
         self.content = (
             Icon(
-                kwargs.get(icon),
-                size=kwargs.get(icon_size),
-                color=kwargs.get(icon_color, colors.BLUE),
+                icon,
+                size=icon_size,
+                color=icon_color,
             )
             if icon != None
             else None
@@ -53,7 +53,7 @@ class TimelineEvent(Container):
         timestamp: str = None,
         timestamp_style: TextStyle = None,
         content_position: int = 8,
-        **kwargs
+        **kwargs,
     ):
         super().__init__(**kwargs)
         self.title = title
@@ -137,9 +137,9 @@ def main(page: Page):
             "title": "Event 1",
             "description": "This is the description for event 1.",
             "timestamp": "2023-01-01 10:00 AM",
-            # "icon": icons.EVENT,
-            # "icon_size": 30,
             "dot_props": {
+                "icon": icons.EVENT,
+                "icon_size": 30,
                 # "border_color": "red",
                 # "border_radius": 2,
                 # "dot_border_radius": 0,

@@ -2,7 +2,6 @@ from flet import *
 from dataclasses import dataclass
 
 
-
 @dataclass
 class RatingSize:
     small = 0.7
@@ -133,6 +132,10 @@ class Rating(Row):
             rating_list[i].content.selected = i <= index
             rating_list[i].update()
 
+    # def get_rating_value(self):
+    #     if self.size==RatingType.CONTROLLED:
+    #         return
+
 
 def main(page: Page):
     page.vertical_alignment = "center"
@@ -153,8 +156,7 @@ def main(page: Page):
             size="large",
         ),
         Rating(
-            rating_icon=cupertino_icons.HEART,
-            selection_icon=cupertino_icons.HEART_FILL,
+            selection_icon=icons.HEART_FILL,
             half_icon=icons.HEART_BROKEN_OUTLINED,
             max_value=5,
             rating_value=1.5,
