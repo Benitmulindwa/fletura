@@ -123,7 +123,7 @@ Ratings provide insight regarding others' opinions and experiences, and can allo
 - **max_value (int):** number of rating icons.
 - **rating_value (float):** Works when "disabled" or "readonly" is selected.
 - **rating_icon (str):** Rating icont, by default it's *icons.STAR_OUTLINE_OUTLINED*.
-- **size (str):** The size of the rating icons,small "large".
+- **size (str):** The size of the rating icons. Possible values: "small", "medium","large" or "extralarge", "large" is the default value.
 - **color (str):** icon border color by default it's "colors.WHITE".
 - **selection_color (str):** the icon_color when selected by default "colors.ORANGE".
 - **selection_icon (str):** the icon when selected, by default it's  "icons.STAR".
