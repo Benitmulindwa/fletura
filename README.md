@@ -242,7 +242,7 @@ Finally, add the Timeline component to your Flet page
 - **dot_props:** Customization properties for the dot, such as border and color.
 - **separator_props:** Customization properties for the separator, such as color and height.
 - **content_position:** Adjusts the vertical spacing of the content.
-- 
+  
 ### Customization Options.
 #### Dot Customization (dot_props):
 - **icon((str):** Icon for the dot (if any).
@@ -250,13 +250,14 @@ Finally, add the Timeline component to your Flet page
 - **icon_color:** Color of the icon.
 - **dot_size:** Size of the dot.
 - **dot_border_radius:** Border radius for the dot.
-- **border:** Border properties for the dot.
+- (Inherits from Container control) 
   
 #### Separator Customization (separator_props):
 
 - **color:** Color of the separator.
 - **width:** Width of the separator.
 - **height:** Height of the separator.
+- 
 #### Text Styles:
 
 - **title_style:** Text style for the title.
