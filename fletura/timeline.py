@@ -138,8 +138,8 @@ def main(page: Page):
             "description": "This is the description for event 1.",
             "timestamp": "2023-01-01 10:00 AM",
             "dot_props": {
-                "icon": icons.EVENT,
-                "icon_size": 30,
+                # "icon": icons.EVENT,
+                # "icon_size": 30,
                 # "border_color": "red",
                 # "border_radius": 2,
                 # "dot_border_radius": 0,
