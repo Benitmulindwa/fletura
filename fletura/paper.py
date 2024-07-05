@@ -2,16 +2,15 @@ import flet as ft
 from flet import *
 
 
-# A component for displaying content on an elevated surface
+# A component that displays its content on an elevated surface
 class Paper(Container):
     def __init__(
         self,
         outlined: bool = False,
         elevation: int = 1,
-        alignment=ft.alignment.center,
         **kwargs,
     ) -> None:
-        super().__init__(alignment=alignment**kwargs)
+        super().__init__(**kwargs)
         self.elevation: int = elevation
         # Define the shadow parameters based on the distance
         self.shadow_params: dict = {
@@ -52,7 +51,7 @@ def main(page: Page):
     page.padding = 0
     page.vertical_alignment = "center"
     page.horizontal_alignment = "center"
-    # Test the function with different distances
+    # Test with different distances
     distances = [0, 1, 2, 3, 4, 8, 12, 16, 24]
     for dist in distances:
         container = Paper(

@@ -20,7 +20,9 @@ class Dock(Container):
                     Icon(dock_icon, color=icon_color, size=30),
                     height=50,
                     width=60,
-                    margin=margin.only(left=-16 if "left" in position else 5, right=15),
+                    margin=margin.only(
+                        left=-16 if "right" in position else 5, right=15
+                    ),
                 ),
                 self.create_dock(count, position),
             ]
@@ -58,13 +60,13 @@ class Dock(Container):
         elif position == "center_left":
             dock.top = 15
             dock.left = 22
-        elif position == "bottom_left":
-            dock.top = 26
-            dock.left = 22
         elif position == "bottom_right":
             dock.top = 26
+            dock.left = 22
+        elif position == "bottom_left":
+            dock.top = 26
             dock.right = 50
-        elif position == "top_left":
+        else:
             dock.bottom = 26
             dock.right = 50
 
@@ -76,7 +78,7 @@ def main(page: Page):
     page.horizontal_alignment = "center"
     page.add(
         Dock(position="top_left"),
-        Dock(cupertino_icons.CART, position="center_left", count=105, max_value=99),
+        Dock(cupertino_icons.CART, position="top_right", count=105, max_value=99),
         Dock(count=15, dock_color="purple500", position="top_left", max_value=9),
         Dock(count=105, dock_color="blue", position="top_right", max_value=99),
         Dock(count=1005, position="bottom_right", max_value=999),
