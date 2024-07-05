@@ -17,6 +17,9 @@ A collection of reusable Flet components to enhance your application development
   - [Rating](#rating)
   - [Paper](#paper)
   - [Neumorphic](#neumorphic)
+    - [ConvexContainer](#convexcontainer)
+    - [FloatingContainer](#floatingcontainer)
+    - [FlatContainer](#flatcontainer) 
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -174,6 +177,69 @@ Paper(
 )
 ```
 ## Neumorphic
+A set of neumorphic componets
+### Description of Components
+
+#### FlatContainer
+`FlatContainer` is a component that represents a flat, slightly elevated container with a grey background. It includes a subtle shadow effect to give it a lifted appearance.
+
+**Attributes:**
+- `height`: Specifies the height of the container.
+- `bgcolor`: Set to `colors.GREY_200` by default.
+- `alignment`: Centers the content inside the container.
+- `border_radius`: Set to `10` by default.
+- `shadow`: Adds a subtle shadow effect.
+
+#### ConvexContainer
+`ConvexContainer` is a component that represents a container with a convex (pressed in) appearance. It uses a gradient background and multiple shadows to create the effect.
+
+**Attributes:**
+- `height`: Specifies the height of the container.
+- `elevation`: Determines the intensity of the shadow.
+- `shadow1_color`: The color of the first shadow.
+- `shadow2_color`: The color of the second shadow.
+- `border_radius`: Set to `10` by default.
+- `gradient`: Applies a gradient background.
+- `shadow`: Adds multiple shadows to create the convex effect.
+
+#### FloatingContainer
+`FloatingContainer` is a component that represents a container with a floating appearance, elevated from the background using shadow effects.
+
+**Attributes:**
+- `height`: Specifies the height of the container.
+- `border_radius`: Set to `10` by default.
+- `bgcolor`: The background color of the container.
+- `shadow1_color`: The color of the first shadow.
+- `shadow2_color`: The color of the second shadow.
+- `shadow_position`: Specifies the position of the shadow using the `ShadowPosition` class.
+
+### How to Use
+
+To use these components, you can import them and create instances with the desired attributes. Here's an example of how to use these components in a Flet application:
+
+```python
+
+FlatContainer(height=50)
+ConvexContainer(
+  height=100,
+  border_radius=50,
+  padding=padding.only(20),
+  elevation=0.4,
+  content=Text("Convex Container", color="black"),
+)
+FloatingContainer(
+  height=100,
+  width=100,
+  shadow_position=ShadowPosition.BOTTOM_RIGHT
+)
+FloatingContainer(
+  content=Text("A floating Container"),
+  width=200,
+  height=100,
+  shadow_position=ShadowPosition.TOP_RIGHT
+)
+
+```
 ## Timeline
 The Timeline component is a visually structured UI element designed to display a sequence of events or activities in a chronological order. It provides a clear and organized way to present the timeline of events, making it suitable for various applications like project tracking, historical data visualization, user activity logs, and more.
 
