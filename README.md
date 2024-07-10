@@ -205,7 +205,7 @@ The `Switch` component is a customizable switch control for toggling between two
 - **on_change** (`ControlEvent`): An event handler for when the switch state changes. Default is `None`.
 
 
-## Example
+### Example of usage
 
 ```python
 Switch(
@@ -225,6 +225,103 @@ Switch(
     },
 )
 ```
+### Other examples
+```python
+#Switch with track contents
+switch = Switch(
+        track_width=100,
+        thumb_height=40,
+        thumb_width=40,
+        active_color="green",
+        inactive_color="grey",
+        inactive_thumb_content=Icon(icons.LIGHT_MODE),
+        active_thumb_content=Icon(icons.DARK_MODE),
+        active_track_content=Icon(icons.LIGHT_MODE, size=20),
+        inactive_track_content=Icon(icons.DARK_MODE),
+        on_change=switch_changed,
+        track_style={
+            "border": border.all(1, "white"),
+        },
+        
+    )
+```
+```python
+# Basic Switch
+Switch()
+```
+```python
+# Small thumb
+switch_custom_colors = Switch(
+        label="Small thumb",
+        thumb_height=20,
+        thumb_width=20,
+        active_color="blue",
+        inactive_color="red",
+        on_change=switch_changed,
+    )
+```
+```python
+# Custom Thumb Content
+switch_thumb_content = Switch(
+        label="Custom Thumb Content",
+        active_thumb_content=Icon(icons.CHECK),
+        inactive_thumb_content=Icon(icons.CLOSE),
+        on_change=switch_changed,
+    )
+```
+```python
+# Custom Track Gradient & squared thumb
+switch_gradient_track = Switch(
+    label="Gradient Track",
+    track_width=100,
+    track_style={
+        "gradient": LinearGradient(
+            colors=["red", "orange", "blue", "yellow", "#f5f5f5"]
+        )
+    },
+    thumb_style={"gradient": RadialGradient(colors=["blue", "yellow", "orange"])},
+    on_change=switch_changed,
+)
+```
+```python
+# Large Thumb and Track
+Switch(
+        label="Track with background Images",
+        track_width=100,
+        active_track_content=Image(
+            src="https://picsum.photos/200/200?3", fit=ImageFit.FIT_WIDTH, width=100
+        ),
+        inactive_track_content=Image(
+            src="https://picsum.photos/200/200?0", fit=ImageFit.FIT_WIDTH, width=100
+        ),
+        track_height=50,
+        thumb_width=60,
+        thumb_height=60,
+        value=True,
+        on_change=switch_changed,
+    )
+```
+```python
+# Switch with all customizations
+Switch(
+        label="Fully Customized",
+        track_width=120,
+        track_height=60,
+        thumb_width=70,
+        thumb_height=70,
+        active_thumb_content=Icon(icons.POWER, color="white"),
+        inactive_thumb_content=Icon(icons.POWER_OFF, color="white"),
+        active_color="green",
+        inactive_color="red",
+        track_style={"gradient": RadialGradient(colors=["purple", "blue"])},
+        thumb_style={
+            "gradient": LinearGradient(colors=["yellow", "orange"]),
+            "border_radius": 40,
+        },
+        on_change=switch_changed,
+    )
+```
+
 
 ## Neumorphic
 A set of neumorphic componets
