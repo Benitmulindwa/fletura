@@ -41,33 +41,3 @@ class Paper(Container):
         if outlined:
             self.border = border.all(width=2, color="#80868B")
         self.shadow = shadows
-
-
-def main(page: Page):
-    page.scroll = "always"
-    # page.bgcolor = "white"
-    page.theme_mode = "light"
-    page.spacing = 50
-    page.padding = 0
-    page.vertical_alignment = "center"
-    page.horizontal_alignment = "center"
-    # Test with different distances
-    distances = [0, 1, 2, 3, 4, 8, 12, 16, 24]
-    for dist in distances:
-        container = Paper(
-            elevation=dist,
-            width=200,
-            height=50,
-            bgcolor="white",
-            outlined=True,
-            content=ft.Text(f"Elevation {dist}", color="black"),
-        )
-        container.border_radius = 5
-        page.add(container)
-        if dist == 24:
-            container.margin = margin.only(bottom=50)
-        container.update()
-
-
-if __name__ == "__main__":
-    app(target=main)

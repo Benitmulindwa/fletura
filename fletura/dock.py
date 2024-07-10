@@ -71,19 +71,3 @@ class Dock(Container):
             dock.right = 50
 
         return dock
-
-
-def main(page: Page):
-    page.vertical_alignment = "center"
-    page.horizontal_alignment = "center"
-    page.add(
-        Dock(position="top_left"),
-        Dock(cupertino_icons.CART, position="top_right", count=105, max_value=99),
-        Dock(count=15, dock_color="purple500", position="top_left", max_value=9),
-        Dock(count=105, dock_color="blue", position="top_right", max_value=99),
-        Dock(count=1005, position="bottom_right", max_value=999),
-    )
-
-
-if __name__ == "__main__":
-    app(target=main)

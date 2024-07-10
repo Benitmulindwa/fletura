@@ -131,39 +131,3 @@ class Rating(Row):
         for i in range(len(rating_list)):
             rating_list[i].content.selected = i <= index
             rating_list[i].update()
-
-    # def get_rating_value(self):
-    #     if self.size==RatingType.CONTROLLED:
-    #         return
-
-
-def main(page: Page):
-    page.vertical_alignment = "center"
-    page.alignment = "center"
-    page.add(
-        # Rating(max_value=5, size="small"),
-        Rating(
-            rating_icon=icons.STAR_OUTLINE_OUTLINED,
-            selection_icon=icons.STAR,
-            max_value=5,
-            rating_type=RatingType.CONTROLLED,
-        ),
-        Rating(
-            max_value=5,
-            selection_icon=icons.STAR,
-            rating_value=2.5,
-            rating_type=RatingType.READONLY,
-            size="large",
-        ),
-        Rating(
-            selection_icon=icons.HEART_FILL,
-            half_icon=icons.HEART_BROKEN_OUTLINED,
-            max_value=5,
-            rating_value=1.5,
-            rating_type=RatingType.DISABLED,
-        ),
-    )
-
-
-if __name__ == "__main__":
-    app(target=main)

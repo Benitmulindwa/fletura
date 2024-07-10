@@ -1,5 +1,5 @@
 from flet import *
-from fletura import Paper, Rating, Dock, CardMedia, Timeline
+from fletura import Paper, Rating, Dock, CardMedia, Timeline, Switch
 
 
 def main(page: Page):
@@ -23,6 +23,7 @@ def main(page: Page):
         Dock(position="top_left"),
         Dock(cupertino_icons.CART, position="center_left", count=105, max_value=99),
         Dock(count=15, dock_color="purple500", position="top_left", max_value=9),
+        Switch(),
     )
 
 
