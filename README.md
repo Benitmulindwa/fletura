@@ -183,11 +183,11 @@ Paper(
 
 The `Switch` component is a customizable switch control for toggling between two states. It provides various customization options for its appearance and behavior, including track and thumb styling, content, colors, and events.
 
-## Initialization Parameters
+## Attributs
 
 - **track_width** (`int`): The width of the switch track. Default is `60`.
 - **track_height** (`int`): The height of the switch track. Default is `25`.
-- **track_style** (`dict`): A dictionary of styles for the switch track. Default is `{"alignment": alignment.center_left}`.
+- **track_style** (`dict`): A dictionary of styles(`Container properties`) for the switch track. Default is `{"alignment": alignment.center_left}`.
 - **active_track_content** (`Control`): The content to display on the track when the switch is active. Default is `None`.
 - **inactive_track_content** (`Control`): The content to display on the track when the switch is inactive. Default is `None`.
 - **thumb_width** (`int`): The width of the switch thumb. Default is `40`.
@@ -195,7 +195,7 @@ The `Switch` component is a customizable switch control for toggling between two
 - **active_thumb_content** (`Control`): The content to display on the thumb when the switch is active. Default is `None`.
 - **inactive_thumb_content** (`Control`): The content to display on the thumb when the switch is inactive. Default is `None`.
 - **default_thumb_content** (`Control`): The default content to display on the thumb if no active or inactive content is specified. Default is `None`.
-- **thumb_style** (`dict`): A dictionary of styles for the switch thumb. Default is `{"bgcolor": "white", "border_radius": 20}`.
+- **thumb_style** (`dict`): A dictionary of styles(`Container properties`) for the switch thumb. Default is `{"bgcolor": "white", "border_radius": 20}`.
 - **active_color** (`str`): The background color of the track when the switch is active. Default is `"green"`.
 - **inactive_color** (`str`): The background color of the track when the switch is inactive. Default is `"grey"`.
 - **label** (`str`): The label to display next to the switch. Default is `None`.
@@ -204,24 +204,6 @@ The `Switch` component is a customizable switch control for toggling between two
 - **on_hover** (`HoverEvent`): An event handler for when the switch is hovered over. Default is `None`.
 - **on_change** (`ControlEvent`): An event handler for when the switch state changes. Default is `None`.
 
-## Methods
-
-- **create_switch(self)**:
-  - Initializes and creates the switch components (track and thumb) and their layout.
-  - Sets the initial state of the switch based on the `value` parameter.
-
-- **calculate_offsets(self)**:
-  - Calculates the offsets needed to center the thumb on the track.
-  - Returns a tuple of `(x_offset, y_offset)`.
-
-- **update_switch_state(self)**:
-  - Updates the visual state of the switch (track color, thumb position, and content) based on the current `value`.
-  - Calls the `update` method on the thumb and track to apply the changes.
-
-- **switch_changed(self, e)**:
-  - Toggles the switch state when clicked.
-  - Updates the switch state visually.
-  - Calls the `on_change` event handler if it is specified.
 
 ## Example
 
