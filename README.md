@@ -13,9 +13,10 @@ A collection of reusable Flet components to enhance your application development
 - [Components](#components)
   - [CardMedia](#cardmedia)
   - [Dock](#dock)
-  - [Timeline](#timeline)
   - [Rating](#rating)
   - [Paper](#paper)
+  - [Switch](#switch)
+  - [Timeline](#timeline)
   - [Neumorphic](#neumorphic)
     - [ConvexContainer](#convexcontainer)
     - [FloatingContainer](#floatingcontainer)
@@ -165,6 +166,7 @@ A component for displaying content on an elevated surface.
 ### Props
 - **outlined (bool):** "True" if the Paper will be outlined otherwise False,
 - **elevation (int):** Defines how much the Paper will be elevated (0,1,2,3,4,8,12,16 and 24) by default elevation = 1,
+  
 ### Examples
 ```python
 Paper(
@@ -176,6 +178,151 @@ Paper(
       content=ft.Text(f"Elevation 8", color="black"),
 )
 ```
+
+## Switch
+
+The `Switch` component is a customizable switch control for toggling between two states. It provides various customization options for its appearance and behavior, including track and thumb styling, content, colors, and events.
+
+## Attributs
+
+- **track_width** (`int`): The width of the switch track. Default is `60`.
+- **track_height** (`int`): The height of the switch track. Default is `25`.
+- **track_style** (`dict`): A dictionary of styles(`Container properties`) for the switch track. Default is `{"alignment": alignment.center_left}`.
+- **active_track_content** (`Control`): The content to display on the track when the switch is active. Default is `None`.
+- **inactive_track_content** (`Control`): The content to display on the track when the switch is inactive. Default is `None`.
+- **thumb_width** (`int`): The width of the switch thumb. Default is `40`.
+- **thumb_height** (`int`): The height of the switch thumb. Default is `40`.
+- **active_thumb_content** (`Control`): The content to display on the thumb when the switch is active. Default is `None`.
+- **inactive_thumb_content** (`Control`): The content to display on the thumb when the switch is inactive. Default is `None`.
+- **default_thumb_content** (`Control`): The default content to display on the thumb if no active or inactive content is specified. Default is `None`.
+- **thumb_style** (`dict`): A dictionary of styles(`Container properties`) for the switch thumb. Default is `{"bgcolor": "white", "border_radius": 20}`.
+- **active_color** (`str`): The background color of the track when the switch is active. Default is `"green"`.
+- **inactive_color** (`str`): The background color of the track when the switch is inactive. Default is `"grey"`.
+- **label** (`str`): The label to display next to the switch. Default is `None`.
+- **label_style** (`TextStyle`): The style to apply to the label text. Default is `None`.
+- **value** (`bool`): The initial state of the switch. If `True`, the switch is in the active state. Default is `False`.
+- **on_hover** (`HoverEvent`): An event handler for when the switch is hovered over. Default is `None`.
+- **on_change** (`ControlEvent`): An event handler for when the switch state changes. Default is `None`.
+
+
+### Example of usage
+
+```python
+Switch(
+    track_width=100,
+    thumb_height=40,
+    thumb_width=40,
+    active_color="green",
+    inactive_color="grey",
+    inactive_thumb_content=Icon(icons.LIGHT_MODE),
+    active_thumb_content=Icon(icons.DARK_MODE),
+    value=True,  # Set initial value to True
+    on_change=clicked,
+    track_style={
+        "gradient": LinearGradient(
+            colors=["red", "orange", "blue", "yellow", "#f5f5f5"]
+        ),
+    },
+)
+```
+### Other examples
+```python
+#Switch with track contents
+switch = Switch(
+        track_width=100,
+        thumb_height=40,
+        thumb_width=40,
+        active_color="green",
+        inactive_color="grey",
+        inactive_thumb_content=Icon(icons.LIGHT_MODE),
+        active_thumb_content=Icon(icons.DARK_MODE),
+        active_track_content=Icon(icons.LIGHT_MODE, size=20),
+        inactive_track_content=Icon(icons.DARK_MODE),
+        on_change=switch_changed,
+        track_style={
+            "border": border.all(1, "white"),
+        },
+        
+    )
+```
+```python
+# Basic Switch
+Switch()
+```
+```python
+# Small thumb
+switch_custom_colors = Switch(
+        label="Small thumb",
+        thumb_height=20,
+        thumb_width=20,
+        active_color="blue",
+        inactive_color="red",
+        on_change=switch_changed,
+    )
+```
+```python
+# Custom Thumb Content
+switch_thumb_content = Switch(
+        label="Custom Thumb Content",
+        active_thumb_content=Icon(icons.CHECK),
+        inactive_thumb_content=Icon(icons.CLOSE),
+        on_change=switch_changed,
+    )
+```
+```python
+# Custom Track Gradient & squared thumb
+switch_gradient_track = Switch(
+    label="Gradient Track",
+    track_width=100,
+    track_style={
+        "gradient": LinearGradient(
+            colors=["red", "orange", "blue", "yellow", "#f5f5f5"]
+        )
+    },
+    thumb_style={"gradient": RadialGradient(colors=["blue", "yellow", "orange"])},
+    on_change=switch_changed,
+)
+```
+```python
+# Large Thumb and Track
+Switch(
+        label="Track with background Images",
+        track_width=100,
+        active_track_content=Image(
+            src="https://picsum.photos/200/200?3", fit=ImageFit.FIT_WIDTH, width=100
+        ),
+        inactive_track_content=Image(
+            src="https://picsum.photos/200/200?0", fit=ImageFit.FIT_WIDTH, width=100
+        ),
+        track_height=50,
+        thumb_width=60,
+        thumb_height=60,
+        value=True,
+        on_change=switch_changed,
+    )
+```
+```python
+# Switch with all customizations
+Switch(
+        label="Fully Customized",
+        track_width=120,
+        track_height=60,
+        thumb_width=70,
+        thumb_height=70,
+        active_thumb_content=Icon(icons.POWER, color="white"),
+        inactive_thumb_content=Icon(icons.POWER_OFF, color="white"),
+        active_color="green",
+        inactive_color="red",
+        track_style={"gradient": RadialGradient(colors=["purple", "blue"])},
+        thumb_style={
+            "gradient": LinearGradient(colors=["yellow", "orange"]),
+            "border_radius": 40,
+        },
+        on_change=switch_changed,
+    )
+```
+
+
 ## Neumorphic
 A set of neumorphic componets
 ### Description of Components
