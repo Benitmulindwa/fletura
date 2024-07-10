@@ -166,6 +166,7 @@ A component for displaying content on an elevated surface.
 ### Props
 - **outlined (bool):** "True" if the Paper will be outlined otherwise False,
 - **elevation (int):** Defines how much the Paper will be elevated (0,1,2,3,4,8,12,16 and 24) by default elevation = 1,
+  
 ### Examples
 ```python
 Paper(
@@ -179,8 +180,6 @@ Paper(
 ```
 
 ## Switch
-
-# Switch Component Documentation
 
 The `Switch` component is a customizable switch control for toggling between two states. It provides various customization options for its appearance and behavior, including track and thumb styling, content, colors, and events.
 
@@ -224,11 +223,10 @@ The `Switch` component is a customizable switch control for toggling between two
   - Updates the switch state visually.
   - Calls the `on_change` event handler if it is specified.
 
-## Example Usage
-
+## Example
 
 ```python
-switch = Switch(
+Switch(
     track_width=100,
     thumb_height=40,
     thumb_width=40,
