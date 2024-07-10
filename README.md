@@ -13,9 +13,10 @@ A collection of reusable Flet components to enhance your application development
 - [Components](#components)
   - [CardMedia](#cardmedia)
   - [Dock](#dock)
-  - [Timeline](#timeline)
   - [Rating](#rating)
   - [Paper](#paper)
+  - [Switch](#switch)
+  - [Timeline](#timeline)
   - [Neumorphic](#neumorphic)
     - [ConvexContainer](#convexcontainer)
     - [FloatingContainer](#floatingcontainer)
@@ -176,6 +177,75 @@ Paper(
       content=ft.Text(f"Elevation 8", color="black"),
 )
 ```
+
+## Switch
+
+# Switch Component Documentation
+
+The `Switch` component is a customizable switch control for toggling between two states. It provides various customization options for its appearance and behavior, including track and thumb styling, content, colors, and events.
+
+## Initialization Parameters
+
+- **track_width** (`int`): The width of the switch track. Default is `60`.
+- **track_height** (`int`): The height of the switch track. Default is `25`.
+- **track_style** (`dict`): A dictionary of styles for the switch track. Default is `{"alignment": alignment.center_left}`.
+- **active_track_content** (`Control`): The content to display on the track when the switch is active. Default is `None`.
+- **inactive_track_content** (`Control`): The content to display on the track when the switch is inactive. Default is `None`.
+- **thumb_width** (`int`): The width of the switch thumb. Default is `40`.
+- **thumb_height** (`int`): The height of the switch thumb. Default is `40`.
+- **active_thumb_content** (`Control`): The content to display on the thumb when the switch is active. Default is `None`.
+- **inactive_thumb_content** (`Control`): The content to display on the thumb when the switch is inactive. Default is `None`.
+- **default_thumb_content** (`Control`): The default content to display on the thumb if no active or inactive content is specified. Default is `None`.
+- **thumb_style** (`dict`): A dictionary of styles for the switch thumb. Default is `{"bgcolor": "white", "border_radius": 20}`.
+- **active_color** (`str`): The background color of the track when the switch is active. Default is `"green"`.
+- **inactive_color** (`str`): The background color of the track when the switch is inactive. Default is `"grey"`.
+- **label** (`str`): The label to display next to the switch. Default is `None`.
+- **label_style** (`TextStyle`): The style to apply to the label text. Default is `None`.
+- **value** (`bool`): The initial state of the switch. If `True`, the switch is in the active state. Default is `False`.
+- **on_hover** (`HoverEvent`): An event handler for when the switch is hovered over. Default is `None`.
+- **on_change** (`ControlEvent`): An event handler for when the switch state changes. Default is `None`.
+
+## Methods
+
+- **create_switch(self)**:
+  - Initializes and creates the switch components (track and thumb) and their layout.
+  - Sets the initial state of the switch based on the `value` parameter.
+
+- **calculate_offsets(self)**:
+  - Calculates the offsets needed to center the thumb on the track.
+  - Returns a tuple of `(x_offset, y_offset)`.
+
+- **update_switch_state(self)**:
+  - Updates the visual state of the switch (track color, thumb position, and content) based on the current `value`.
+  - Calls the `update` method on the thumb and track to apply the changes.
+
+- **switch_changed(self, e)**:
+  - Toggles the switch state when clicked.
+  - Updates the switch state visually.
+  - Calls the `on_change` event handler if it is specified.
+
+## Example Usage
+
+
+```python
+switch = Switch(
+    track_width=100,
+    thumb_height=40,
+    thumb_width=40,
+    active_color="green",
+    inactive_color="grey",
+    inactive_thumb_content=Icon(icons.LIGHT_MODE),
+    active_thumb_content=Icon(icons.DARK_MODE),
+    value=True,  # Set initial value to True
+    on_change=clicked,
+    track_style={
+        "gradient": LinearGradient(
+            colors=["red", "orange", "blue", "yellow", "#f5f5f5"]
+        ),
+    },
+)
+```
+
 ## Neumorphic
 A set of neumorphic componets
 ### Description of Components
