@@ -39,7 +39,7 @@ pip install fletura
 Here is a basic example of how to use fletura
 ```python
 import flet as ft
-from fletura import ftr
+import fletura as ftr
 
 def main(page):
 card = ftr.CardMedia(
