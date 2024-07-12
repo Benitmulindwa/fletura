@@ -203,7 +203,7 @@ The `Switch` component is a customizable switch control for toggling between two
 
 - **track_width** (`int`): The width of the switch track. Default is `60`.
 - **track_height** (`int`): The height of the switch track. Default is `25`.
-- **track_style** (`dict`): A dictionary of styles(`Container properties`) for the switch track. Default is `{"alignment": alignment.center_left}`.
+- **track_style** (`dict`): A dictionary of styles(`Container properties`) for the switch track.
 - **active_track_content** (`Control`): The content to display on the track when the switch is active. Default is `None`.
 - **inactive_track_content** (`Control`): The content to display on the track when the switch is inactive. Default is `None`.
 - **thumb_width** (`int`): The width of the switch thumb. Default is `40`.
