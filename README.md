@@ -39,10 +39,10 @@ pip install fletura
 Here is a basic example of how to use fletura
 ```python
 import flet as ft
-from fletura import CardMedia
+import fletura as ftr
 
 def main(page):
-card = CardMedia(
+card = ftr.CardMedia(
             image_src="https://th.bing.com/th/id/R.5e510c21c45cefceb127a2280c789b72?rik=2ddR7LkLmjAIFA&pid=ImgRaw&r=0",
             description="Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
             description_style=TextStyle(color="white"),
@@ -115,10 +115,19 @@ The Dock component is a customizable UI element designed to display notification
 
 ### Examples:
 ```python
-Dock(position="top_left"), 
-Dock(cupertino_icons.CART, position="center_left", count=105, max_value=99),
-Dock(count=15, dock_color="purple500", position="top_left", max_value=9),
-Dock(count=105, dock_color="blue", position="top_right", max_value=99),
+# Basic Dock component
+Dock(position="top_left")
+```
+```python
+Dock(cupertino_icons.CART, position="center_left", count=105, max_value=99)
+```
+```python
+Dock(count=15, dock_color="purple500", position="top_left", max_value=9)
+```
+```python
+Dock(count=105, dock_color="blue", position="top_right", max_value=99)
+```
+```python
 Dock(count=1005, position="bottom_right", max_value=999)
 ```
 ## Rating
@@ -138,19 +147,26 @@ Ratings provide insight regarding others' opinions and experiences, and can allo
 ### Examples:
 
 ```python
+# Controlled rating
 Rating(
     rating_icon=icons.STAR_OUTLINE_OUTLINED,
     selection_icon=icons.STAR,
     max_value=5,
     rating_type=RatingType.CONTROLLED,
-    ),
+    )
+```
+```python
+# Readonly rating
 Rating(
   max_value=5,
   selection_icon=icons.STAR,
   rating_value=2.5,
   rating_type=RatingType.READONLY,
   size="large",
-),
+)
+```
+```python
+# disabled rating
 Rating(
   rating_icon=cupertino_icons.HEART,
   selection_icon=cupertino_icons.HEART_FILL,
@@ -187,7 +203,7 @@ The `Switch` component is a customizable switch control for toggling between two
 
 - **track_width** (`int`): The width of the switch track. Default is `60`.
 - **track_height** (`int`): The height of the switch track. Default is `25`.
-- **track_style** (`dict`): A dictionary of styles(`Container properties`) for the switch track. Default is `{"alignment": alignment.center_left}`.
+- **track_style** (`dict`): A dictionary of styles(`Container properties`) for the switch track.
 - **active_track_content** (`Control`): The content to display on the track when the switch is active. Default is `None`.
 - **inactive_track_content** (`Control`): The content to display on the track when the switch is inactive. Default is `None`.
 - **thumb_width** (`int`): The width of the switch thumb. Default is `40`.
@@ -228,7 +244,7 @@ Switch(
 ### Other examples
 ```python
 #Switch with track contents
-switch = Switch(
+Switch(
         track_width=100,
         thumb_height=40,
         thumb_width=40,
