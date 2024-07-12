@@ -39,10 +39,10 @@ pip install fletura
 Here is a basic example of how to use fletura
 ```python
 import flet as ft
-from fletura import CardMedia
+from fletura import ftr
 
 def main(page):
-card = CardMedia(
+card = ftr.CardMedia(
             image_src="https://th.bing.com/th/id/R.5e510c21c45cefceb127a2280c789b72?rik=2ddR7LkLmjAIFA&pid=ImgRaw&r=0",
             description="Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
             description_style=TextStyle(color="white"),
