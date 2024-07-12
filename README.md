@@ -115,10 +115,19 @@ The Dock component is a customizable UI element designed to display notification
 
 ### Examples:
 ```python
-Dock(position="top_left"), 
-Dock(cupertino_icons.CART, position="center_left", count=105, max_value=99),
-Dock(count=15, dock_color="purple500", position="top_left", max_value=9),
-Dock(count=105, dock_color="blue", position="top_right", max_value=99),
+# Basic Dock component
+Dock(position="top_left")
+```
+```python
+Dock(cupertino_icons.CART, position="center_left", count=105, max_value=99)
+```
+```python
+Dock(count=15, dock_color="purple500", position="top_left", max_value=9)
+```
+```python
+Dock(count=105, dock_color="blue", position="top_right", max_value=99)
+```
+```python
 Dock(count=1005, position="bottom_right", max_value=999)
 ```
 ## Rating
@@ -138,19 +147,26 @@ Ratings provide insight regarding others' opinions and experiences, and can allo
 ### Examples:
 
 ```python
+# Controlled rating
 Rating(
     rating_icon=icons.STAR_OUTLINE_OUTLINED,
     selection_icon=icons.STAR,
     max_value=5,
     rating_type=RatingType.CONTROLLED,
-    ),
+    )
+```
+```python
+# Readonly rating
 Rating(
   max_value=5,
   selection_icon=icons.STAR,
   rating_value=2.5,
   rating_type=RatingType.READONLY,
   size="large",
-),
+)
+```
+```python
+# disabled rating
 Rating(
   rating_icon=cupertino_icons.HEART,
   selection_icon=cupertino_icons.HEART_FILL,
@@ -228,7 +244,7 @@ Switch(
 ### Other examples
 ```python
 #Switch with track contents
-switch = Switch(
+Switch(
         track_width=100,
         thumb_height=40,
         thumb_width=40,
