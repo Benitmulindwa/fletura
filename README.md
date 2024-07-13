@@ -60,7 +60,9 @@ card = ftr.CardMedia(
 ft.app(target=main)
 ```
 ## Output:
+
 ![output](https://imgur.com/nfkJnKj.png)
+
 # Components
 
 ## CardMedia
