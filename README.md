@@ -529,7 +529,7 @@ Finally, add the Timeline component to your Flet page
 ### 
 ![](https://i.imgur.com/mao5Tmv.png)
 ###
-Live [demo](https://benitmulindwa/fletura)
+Live [demo](https://benitmulindwa.github.io/fletura)
 # Contributing
 Contributions are welcome! just PR
 
