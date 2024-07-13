@@ -60,7 +60,7 @@ card = ftr.CardMedia(
 ft.app(target=main)
 ```
 ## Output:
-![output](https://imgur.com/nfkJnKj)
+![output](https://imgur.com/nfkJnKj.png)
 # Components
 
 ## CardMedia
@@ -93,6 +93,9 @@ CardMedia(
         title_style=TextStyle(color="white"),
     ),
 ```
+## output:
+![cardmedia](https://i.imgur.com/il1vzJd.png)
+
 ```python
 # CardMedia component with action_area activated
 CardMedia(
@@ -104,6 +107,8 @@ CardMedia(
           title_style=TextStyle(color="white"),
       ),
 ```
+### output:
+![cardmedia](https://i.imgur.com/0VHWPRe.png)
 ## Dock
 The Dock component is a customizable UI element designed to display notifications or status indicators in a visually appealing manner. It consists of an icon and a counter that indicates the number of notifications, items, or messages.
 
@@ -132,8 +137,11 @@ Dock(count=105, dock_color="blue", position="top_right", max_value=99)
 ```python
 Dock(count=1005, position="bottom_right", max_value=999)
 ```
+### Output:
+![dock](https://i.imgur.com/mehJFNd.png)
 ## Rating
 Ratings provide insight regarding others' opinions and experiences, and can allow the user to submit a rating of their own.
+![rating](https://i.imgur.com/2sxb2f5.png)
 ### Props
 - **rating_type: (str)** "controlled","readonly" or "disabled".
 - **max_value (int):** number of rating icons.
@@ -178,9 +186,11 @@ Rating(
   rating_type=RatingType.DISABLED,
 ),
 ```
+
 ## Paper
 A component for displaying content on an elevated surface.
 (inherits from container)
+
 ### Props
 - **outlined (bool):** "True" if the Paper will be outlined otherwise False,
 - **elevation (int):** Defines how much the Paper will be elevated (0,1,2,3,4,8,12,16 and 24) by default elevation = 1,
@@ -196,6 +206,8 @@ Paper(
       content=ft.Text(f"Elevation 8", color="black"),
 )
 ```
+### 
+![paper](https://i.imgur.com/O1OmPBR.png)
 
 ## Switch
 
@@ -267,6 +279,9 @@ Switch(
 # Basic Switch
 Switch()
 ```
+### output:
+![basic switch](https://i.imgur.com/ABZuIUw.png)
+
 ```python
 # Small thumb
 switch_custom_colors = Switch(
@@ -278,6 +293,8 @@ switch_custom_colors = Switch(
         on_change=switch_changed,
     )
 ```
+### output:
+![small thumb](https://i.imgur.com/os58q9D.png)
 ```python
 # Custom Thumb Content
 switch_thumb_content = Switch(
@@ -301,8 +318,9 @@ switch_gradient_track = Switch(
     on_change=switch_changed,
 )
 ```
+![custom thumb](https://i.imgur.com/ufVHnxN.png)
 ```python
-# Large Thumb and Track
+# Track with background Images
 Switch(
         label="Track with background Images",
         track_width=100,
@@ -320,7 +338,7 @@ Switch(
     )
 ```
 ```python
-# Switch with all customizations
+# Switch with almost all customizations
 Switch(
         label="Fully Customized",
         track_width=120,
@@ -339,6 +357,8 @@ Switch(
         on_change=switch_changed,
     )
 ```
+### Output:
+![fullycustom](https://i.imgur.com/xurvfgj.png)
 
 
 ## Neumorphic
@@ -383,8 +403,12 @@ A set of neumorphic componets
 To use these components, you can import them and create instances with the desired attributes. Here's an example of how to use these components in a Flet application:
 
 ```python
+FlatContainer(height=100)
+```
+### Output:
+![](https://i.imgur.com/On2HElu.png)
 
-FlatContainer(height=50)
+```python
 ConvexContainer(
   height=100,
   border_radius=50,
@@ -392,21 +416,25 @@ ConvexContainer(
   elevation=0.4,
   content=Text("Convex Container", color="black"),
 )
-FloatingContainer(
-  height=100,
-  width=100,
-  shadow_position=ShadowPosition.BOTTOM_RIGHT
-)
+```
+### Output:
+![convex cont](https://i.imgur.com/m6sRMYL.png)
+
+```python
 FloatingContainer(
   content=Text("A floating Container"),
   width=200,
   height=100,
   shadow_position=ShadowPosition.TOP_RIGHT
 )
-
 ```
+### Output:
+![](https://i.imgur.com/kCqNeyE.png)
+
 ## Timeline
 The Timeline component is a visually structured UI element designed to display a sequence of events or activities in a chronological order. It provides a clear and organized way to present the timeline of events, making it suitable for various applications like project tracking, historical data visualization, user activity logs, and more.
+###
+![](https://i.imgur.com/kGRWLcy.png)
 
 ### Define Event Data
 First, you need to define the data for each event. Each event can have a *title*, *description*, *timestamp*, and various customizable properties for the dot and separator. Here's a sample event list:
@@ -465,6 +493,7 @@ timeline = Timeline(events)
 ### Add the Timeline to the Page
 Finally, add the Timeline component to your Flet page
 
+
 ### Explanation of Properties
 #### Event Properties
 - **title:** The title of the event.
@@ -495,7 +524,10 @@ Finally, add the Timeline component to your Flet page
 - **description_style:** Text style for the description.
 - **timestamp_style:** Text style for the timestamp.
 
-
+### 
+![](https://i.imgur.com/mao5Tmv.png)
+###
+Live [demo](https://benitmulindwa/fletura)
 # Contributing
 Contributions are welcome! just PR
 
