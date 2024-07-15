@@ -3,7 +3,7 @@ A material UI built with flet library
 
 # Installation
 
-A collection of reusable Flet components to enhance your application development.
+A collection of reusable and customizable Flet components to enhance your application development.
 
 ## Table of Contents
 
