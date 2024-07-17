@@ -296,7 +296,7 @@ switch_custom_colors = Switch(
     )
 ```
 ### output:
-![small thumb](https://i.imgur.com/os58q9D.png)
+![small thumb](https://i.imgur.com/nPptfWd.png)
 ```python
 # Custom Thumb Content
 switch_thumb_content = Switch(
