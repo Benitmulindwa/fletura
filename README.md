@@ -1,6 +1,7 @@
 # Fletura
 A material UI built with flet library
 
+[![PyPI Downloads](https://static.pepy.tech/badge/fletura)](https://pepy.tech/projects/fletura)
 # Installation
 
 A collection of reusable and customizable Flet components to enhance your application development.
